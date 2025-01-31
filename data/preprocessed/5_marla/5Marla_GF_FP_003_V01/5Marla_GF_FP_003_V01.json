@@ -1,0 +1,85 @@
+{
+    "PlotSize": "5_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "003",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:26:45.495753",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Stairs",
+        "Store",
+        "Lobby",
+        "Servant Quarters",
+        "Passage",
+        "Laundry",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 24050,
+            "ApproxAreaInSqFt": 108.22
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 171823,
+            "ApproxAreaInSqFt": 773.2
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 55839,
+            "ApproxAreaInSqFt": 251.28
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 3,
+            "ApproxAreaInSqFt": 0.01
+        },
+        {
+            "RoomType": "Store",
+            "AreaInPixels": 141,
+            "ApproxAreaInSqFt": 0.63
+        },
+        {
+            "RoomType": "Lobby",
+            "AreaInPixels": 29143,
+            "ApproxAreaInSqFt": 131.14
+        },
+        {
+            "RoomType": "Servant Quarters",
+            "AreaInPixels": 3,
+            "ApproxAreaInSqFt": 0.01
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 12552,
+            "ApproxAreaInSqFt": 56.48
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 11,
+            "ApproxAreaInSqFt": 0.05
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 28785,
+            "ApproxAreaInSqFt": 129.53
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 99,
+            "ApproxAreaInSqFt": 0.45
+        }
+    ]
+}

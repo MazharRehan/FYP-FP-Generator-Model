@@ -1,0 +1,79 @@
+{
+    "PlotSize": "20_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "010",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:27:00.190183",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Stairs",
+        "Open Space",
+        "Prayer Room",
+        "Passage",
+        "Laundry",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 22102,
+            "ApproxAreaInSqFt": 99.46
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 50417,
+            "ApproxAreaInSqFt": 226.88
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 29736,
+            "ApproxAreaInSqFt": 133.81
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 89633,
+            "ApproxAreaInSqFt": 403.35
+        },
+        {
+            "RoomType": "Open Space",
+            "AreaInPixels": 52609,
+            "ApproxAreaInSqFt": 236.74
+        },
+        {
+            "RoomType": "Prayer Room",
+            "AreaInPixels": 1,
+            "ApproxAreaInSqFt": 0.0
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 7012,
+            "ApproxAreaInSqFt": 31.55
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 232,
+            "ApproxAreaInSqFt": 1.04
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 20827,
+            "ApproxAreaInSqFt": 93.72
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 25,
+            "ApproxAreaInSqFt": 0.11
+        }
+    ]
+}
