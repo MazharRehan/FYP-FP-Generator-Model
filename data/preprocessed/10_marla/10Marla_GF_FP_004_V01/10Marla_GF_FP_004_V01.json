@@ -1,0 +1,97 @@
+{
+    "PlotSize": "10_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "004",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:26:53.323799",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Lounge",
+        "Stairs",
+        "Open Space",
+        "Prayer Room",
+        "Passage",
+        "Laundry",
+        "Side Garden",
+        "Library",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 28507,
+            "ApproxAreaInSqFt": 128.28
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 70735,
+            "ApproxAreaInSqFt": 318.31
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 41476,
+            "ApproxAreaInSqFt": 186.64
+        },
+        {
+            "RoomType": "Lounge",
+            "AreaInPixels": 9159,
+            "ApproxAreaInSqFt": 41.22
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 92,
+            "ApproxAreaInSqFt": 0.41
+        },
+        {
+            "RoomType": "Open Space",
+            "AreaInPixels": 103123,
+            "ApproxAreaInSqFt": 464.05
+        },
+        {
+            "RoomType": "Prayer Room",
+            "AreaInPixels": 514,
+            "ApproxAreaInSqFt": 2.31
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 11360,
+            "ApproxAreaInSqFt": 51.12
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 214,
+            "ApproxAreaInSqFt": 0.96
+        },
+        {
+            "RoomType": "Side Garden",
+            "AreaInPixels": 2,
+            "ApproxAreaInSqFt": 0.01
+        },
+        {
+            "RoomType": "Library",
+            "AreaInPixels": 1,
+            "ApproxAreaInSqFt": 0.0
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 21684,
+            "ApproxAreaInSqFt": 97.58
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 74,
+            "ApproxAreaInSqFt": 0.33
+        }
+    ]
+}
