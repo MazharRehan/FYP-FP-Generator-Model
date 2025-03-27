@@ -1,0 +1,1 @@
+python floor_plan_generator.py --mode generate --plot_type 10_marla --num_samples 5 --output_dir output

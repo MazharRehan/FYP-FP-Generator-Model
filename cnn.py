@@ -1,1 +1,0 @@
-# CNN architecture for feature extraction
