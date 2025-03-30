@@ -1,0 +1,103 @@
+{
+    "PlotSize": "20_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "007",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:27:01.632204",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Stairs",
+        "Store",
+        "Open Space",
+        "Prayer Room",
+        "Lobby",
+        "Lawn",
+        "Servant Quarters",
+        "Passage",
+        "Laundry",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 17505,
+            "ApproxAreaInSqFt": 78.77
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 51861,
+            "ApproxAreaInSqFt": 233.37
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 28540,
+            "ApproxAreaInSqFt": 128.43
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 98084,
+            "ApproxAreaInSqFt": 441.38
+        },
+        {
+            "RoomType": "Store",
+            "AreaInPixels": 4795,
+            "ApproxAreaInSqFt": 21.58
+        },
+        {
+            "RoomType": "Open Space",
+            "AreaInPixels": 85150,
+            "ApproxAreaInSqFt": 383.17
+        },
+        {
+            "RoomType": "Prayer Room",
+            "AreaInPixels": 1,
+            "ApproxAreaInSqFt": 0.0
+        },
+        {
+            "RoomType": "Lobby",
+            "AreaInPixels": 7425,
+            "ApproxAreaInSqFt": 33.41
+        },
+        {
+            "RoomType": "Lawn",
+            "AreaInPixels": 25,
+            "ApproxAreaInSqFt": 0.11
+        },
+        {
+            "RoomType": "Servant Quarters",
+            "AreaInPixels": 8,
+            "ApproxAreaInSqFt": 0.04
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 5308,
+            "ApproxAreaInSqFt": 23.89
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 203,
+            "ApproxAreaInSqFt": 0.91
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 21517,
+            "ApproxAreaInSqFt": 96.83
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 18,
+            "ApproxAreaInSqFt": 0.08
+        }
+    ]
+}

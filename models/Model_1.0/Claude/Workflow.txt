@@ -1,0 +1,24 @@
+Example Workflow
+Here's a complete workflow to train and use the model:
+
+Prepare your dataset as described above
+
+1. Generate metadata for analysis:
+python generate_metadata.py --dataset dataset --output data/raw
+
+2. Train your model:
+python floor_plan_generator.py --mode train --dataset_path dataset --output_dir output --epochs 200
+
+3. Evaluate results:
+python floor_plan_generator.py --mode evaluate --dataset_path dataset --output_dir evaluation_results
+python evaluate_model.py --dataset_path dataset --model_path generator_model.h5 --output_dir evaluation_results
+
+4. Generate new floor plans:
+python floor_plan_generator.py --mode generate --plot_type 10_marla --num_samples 10 --output_dir generated_plans
+
+5. Use the interactive UI:
+python floor_plan_ui.py
+
+The model will train on your dataset of 5, 10, and 20 Marla floor plans, and then you can generate new designs based on the patterns it has learned.
+
+ 

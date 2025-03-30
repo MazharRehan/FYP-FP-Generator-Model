@@ -5,3 +5,4 @@ models/Model_1.0/Claude/training_checkpoints/*
 **/*.data-00000-of-00001
 **/checkpoint
 checkpoints/
+**/*.h5

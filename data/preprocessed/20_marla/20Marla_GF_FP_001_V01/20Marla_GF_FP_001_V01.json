@@ -1,0 +1,91 @@
+{
+    "PlotSize": "20_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "001",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:26:56.439825",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Stairs",
+        "Open Space",
+        "Prayer Room",
+        "Lobby",
+        "Servant Quarters",
+        "Passage",
+        "Laundry",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 16299,
+            "ApproxAreaInSqFt": 73.35
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 64358,
+            "ApproxAreaInSqFt": 289.61
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 40286,
+            "ApproxAreaInSqFt": 181.29
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 46866,
+            "ApproxAreaInSqFt": 210.9
+        },
+        {
+            "RoomType": "Open Space",
+            "AreaInPixels": 52880,
+            "ApproxAreaInSqFt": 237.96
+        },
+        {
+            "RoomType": "Prayer Room",
+            "AreaInPixels": 2,
+            "ApproxAreaInSqFt": 0.01
+        },
+        {
+            "RoomType": "Lobby",
+            "AreaInPixels": 19198,
+            "ApproxAreaInSqFt": 86.39
+        },
+        {
+            "RoomType": "Servant Quarters",
+            "AreaInPixels": 1,
+            "ApproxAreaInSqFt": 0.0
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 9255,
+            "ApproxAreaInSqFt": 41.65
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 225,
+            "ApproxAreaInSqFt": 1.01
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 19675,
+            "ApproxAreaInSqFt": 88.54
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 20,
+            "ApproxAreaInSqFt": 0.09
+        }
+    ]
+}

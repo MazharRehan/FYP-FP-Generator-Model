@@ -1,0 +1,73 @@
+{
+    "PlotSize": "5_marla",
+    "FloorLevel": "GF",
+    "PlanType": "FP",
+    "FP_Number": "002",
+    "Version": "V01",
+    "ImageDimensions": {
+        "Width": 512,
+        "Height": 928
+    },
+    "DPI": 96,
+    "AspectRatio": 0.552,
+    "ScalingFactor": 0.0045,
+    "ProcessingDate": "2025-01-31T20:26:45.012157",
+    "DetectedRooms": [
+        "Bedroom",
+        "Bathroom",
+        "Drawing Room",
+        "Stairs",
+        "Open Space",
+        "Passage",
+        "Laundry",
+        "Wall",
+        "Door"
+    ],
+    "RoomDetails": [
+        {
+            "RoomType": "Bedroom",
+            "AreaInPixels": 14361,
+            "ApproxAreaInSqFt": 64.62
+        },
+        {
+            "RoomType": "Bathroom",
+            "AreaInPixels": 69036,
+            "ApproxAreaInSqFt": 310.66
+        },
+        {
+            "RoomType": "Drawing Room",
+            "AreaInPixels": 53643,
+            "ApproxAreaInSqFt": 241.39
+        },
+        {
+            "RoomType": "Stairs",
+            "AreaInPixels": 16,
+            "ApproxAreaInSqFt": 0.07
+        },
+        {
+            "RoomType": "Open Space",
+            "AreaInPixels": 113608,
+            "ApproxAreaInSqFt": 511.24
+        },
+        {
+            "RoomType": "Passage",
+            "AreaInPixels": 27689,
+            "ApproxAreaInSqFt": 124.6
+        },
+        {
+            "RoomType": "Laundry",
+            "AreaInPixels": 9,
+            "ApproxAreaInSqFt": 0.04
+        },
+        {
+            "RoomType": "Wall",
+            "AreaInPixels": 29461,
+            "ApproxAreaInSqFt": 132.57
+        },
+        {
+            "RoomType": "Door",
+            "AreaInPixels": 217,
+            "ApproxAreaInSqFt": 0.98
+        }
+    ]
+}
