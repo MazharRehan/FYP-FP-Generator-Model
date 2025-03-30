@@ -6,3 +6,4 @@ models/Model_1.0/Claude/training_checkpoints/*
 **/checkpoint
 checkpoints/
 **/*.h5
+**/*.db
