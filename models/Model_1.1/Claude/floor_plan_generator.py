@@ -42,7 +42,7 @@ COLOR_MAP = {
     'Staircase': [153, 51, 255],     # Violet
     'Lobby': [255, 0, 255],          # Magenta
     'Lawn': [64, 224, 208],          # Turquoise
-    'Dining': [255, 192, 203],       # Pink (NOTE: Check RGB vs metadata script)
+    'Dining': [225, 192, 203],       # Pink (NOTE: Check RGB vs metadata script)
     'Servant': [75, 0, 130],         # Indigo (NOTE: Name differs slightly from metadata script)
     'Passage': [128, 128, 0],        # Olive Green
     'Laundry': [230, 230, 250],      # Lavender
@@ -303,67 +303,66 @@ def upsample_block(x, filters, kernel_size=4, strides=2, apply_dropout=False):
 def build_generator():
     """Builds the U-Net based Generator model."""
     # --- Inputs ---
-    # Input is the original normalized RGB image, used for conditioning structure
     image_input = layers.Input(shape=[IMG_HEIGHT, IMG_WIDTH, NUM_CHANNELS], name='image_input')
-    # Condition is the one-hot plot type vector
     condition_input = layers.Input(shape=[len(PLOT_TYPES)], name='condition_input')
 
     # --- Condition Preprocessing ---
-    # Expand condition to match spatial dimensions HxWx1
     condition_expanded = layers.Dense(IMG_HEIGHT * IMG_WIDTH * 1)(condition_input)
     condition_reshaped = layers.Reshape((IMG_HEIGHT, IMG_WIDTH, 1))(condition_expanded)
-
-    # Combine image and condition - Channels become NUM_CHANNELS + 1
     inputs_combined = layers.Concatenate()([image_input, condition_reshaped]) # Shape: (H, W, C+1)
 
     # --- Encoder (Downsampling Path) ---
-    # Based on Pix2Pix architecture (adjust filter numbers if needed)
-    down_stack = [
-        downsample_block(inputs_combined, 64, apply_batchnorm=False), # (bs, 128, 128, 64)
-        downsample_block(inputs_combined, 128),                        # (bs, 64, 64, 128)
-        downsample_block(inputs_combined, 256),                        # (bs, 32, 32, 256)
-        downsample_block(inputs_combined, 512),                        # (bs, 16, 16, 512)
-        downsample_block(inputs_combined, 512),                        # (bs, 8, 8, 512)
-        downsample_block(inputs_combined, 512),                        # (bs, 4, 4, 512)
-        downsample_block(inputs_combined, 512),                        # (bs, 2, 2, 512)
-        downsample_block(inputs_combined, 512),                        # (bs, 1, 1, 512) Bottleneck
-    ]
-
-    # --- Decoder (Upsampling Path) ---
-    up_stack = [
-        upsample_block(down_stack[-1], 512, apply_dropout=True), # (bs, 2, 2, 1024) with skip connection
-        upsample_block(down_stack[-1], 512, apply_dropout=True), # (bs, 4, 4, 1024)
-        upsample_block(down_stack[-1], 512, apply_dropout=True), # (bs, 8, 8, 1024)
-        upsample_block(down_stack[-1], 512),                     # (bs, 16, 16, 1024)
-        upsample_block(down_stack[-1], 256),                     # (bs, 32, 32, 512)
-        upsample_block(down_stack[-1], 128),                     # (bs, 64, 64, 256)
-        upsample_block(down_stack[-1], 64),                      # (bs, 128, 128, 128)
-    ]
-
-    initializer = tf.random_normal_initializer(0., 0.02)
-    # Final layer to get back to original image size and output channels (logits)
-    last = layers.Conv2DTranspose(NUM_OUTPUT_CHANNELS, 4,
-                                  strides=2,
-                                  padding='same',
-                                  kernel_initializer=initializer,
-                                  activation=None) # <<< Output logits
+    # Define filter sizes for each downsampling layer
+    down_filters = [64, 128, 256, 512, 512, 512, 512, 512]
+    skips = [] # To store the output tensors from each downsampling layer for skip connections
 
     x = inputs_combined # Start with the combined input
-    skips = []
-    for down in down_stack:
-        x = down(x)
+
+    # Apply downsampling layers sequentially
+    for i, filters in enumerate(down_filters):
+        # Apply batchnorm except for the first layer (common practice)
+        apply_batchnorm = (i != 0)
+        x = downsample_block(x, filters, apply_batchnorm=apply_batchnorm)
         skips.append(x)
+        print(f"Down {i}: {x.shape}") # Debug print
 
-    skips = reversed(skips[:-1]) # Reverse skips except the last one (bottleneck)
+    # 'skips' now holds the output tensor of each downsampling layer
+    # The last element skips[-1] is the bottleneck output
 
-    # Upsampling with skip connections
-    for up, skip in zip(up_stack, skips):
-        x = up(x)
-        x = layers.Concatenate()([x, skip])
+    # --- Decoder (Upsampling Path) ---
+    # Define filter sizes and dropout flags for each upsampling layer
+    up_filters = [512, 512, 512, 512, 256, 128, 64] # 7 upsampling layers
+    apply_dropout = [True, True, True, True, False, False, False] # Corresponding dropout flags
 
-    x = last(x) # Final layer
+    # Start decoding from the bottleneck (last element of skips)
+    x = skips[-1]
+    # Reverse the skip connections list (excluding the bottleneck itself)
+    skips_reversed = reversed(skips[:-1])
 
-    return models.Model(inputs=[image_input, condition_input], outputs=x, name='generator')
+    # Apply upsampling layers sequentially, adding skip connections
+    for i, (filters, dropout, skip_connection) in enumerate(zip(up_filters, apply_dropout, skips_reversed)):
+        x = upsample_block(x, filters, apply_dropout=dropout)
+        # Concatenate with the corresponding skip connection from the encoder path
+        x = layers.Concatenate()([x, skip_connection])
+        print(f"Up {i}: {x.shape}") # Debug print
+
+
+    # --- Final Layer ---
+    initializer = tf.random_normal_initializer(0., 0.02)
+    # Final Conv2DTranspose to get the desired number of output channels (logits)
+    # and match the original image size (256x256)
+    last = layers.Conv2DTranspose(NUM_OUTPUT_CHANNELS, 4,
+                                  strides=2, # Upsamples from 128x128 to 256x256
+                                  padding='same',
+                                  kernel_initializer=initializer,
+                                  activation=None, # Output raw logits for SparseCategoricalCrossentropy
+                                  name='final_output_logits')
+
+    output_logits = last(x)
+    print(f"Output: {output_logits.shape}") # Debug print
+
+
+    return models.Model(inputs=[image_input, condition_input], outputs=output_logits, name='generator')
 
 
 def build_discriminator():
@@ -372,44 +371,47 @@ def build_discriminator():
 
     # --- Inputs ---
     # Input is the target (real) or generated (fake) segmentation map (one-hot encoded)
-    # Shape: (H, W, NUM_OUTPUT_CHANNELS)
     segmap_input = layers.Input(shape=[IMG_HEIGHT, IMG_WIDTH, NUM_OUTPUT_CHANNELS], name='segmap_input')
     # Condition is the one-hot plot type vector
     condition_input = layers.Input(shape=[len(PLOT_TYPES)], name='condition_input')
 
     # --- Condition Preprocessing ---
-    # Expand condition to match spatial dimensions HxWx1
     condition_expanded = layers.Dense(IMG_HEIGHT * IMG_WIDTH * 1)(condition_input)
     condition_reshaped = layers.Reshape((IMG_HEIGHT, IMG_WIDTH, 1))(condition_expanded)
-
-    # Combine segmentation map and condition
-    # Channels = NUM_OUTPUT_CHANNELS + 1
     inputs_combined = layers.Concatenate()([segmap_input, condition_reshaped]) # (bs, H, W, N_classes+1)
 
     # --- PatchGAN Architecture ---
-    # Sequence of Conv2D layers reducing spatial dimensions
+    # Apply layers sequentially
     # Layer 1: (bs, 128, 128, 64)
-    down1 = downsample_block(inputs_combined, 64, apply_batchnorm=False)(inputs_combined)
+    x = downsample_block(inputs_combined, 64, apply_batchnorm=False)
     # Layer 2: (bs, 64, 64, 128)
-    down2 = downsample_block(down1, 128)(down1)
+    x = downsample_block(x, 128)
     # Layer 3: (bs, 32, 32, 256)
-    down3 = downsample_block(down2, 256)(down2)
+    x = downsample_block(x, 256)
+    print(f"Disc Down 3 shape: {x.shape}") # Debug
 
     # Intermediate layer (optional, common in PatchGAN)
-    zero_pad1 = layers.ZeroPadding2D()(down3) # (bs, 34, 34, 256)
+    zero_pad1 = layers.ZeroPadding2D()(x) # (bs, 34, 34, 256)
+    print(f"Disc ZeroPad1 shape: {zero_pad1.shape}") # Debug
+
     conv = layers.Conv2D(512, 4, strides=1,
                          kernel_initializer=initializer,
                          use_bias=False)(zero_pad1) # (bs, 31, 31, 512)
+    print(f"Disc Conv shape: {conv.shape}") # Debug
+
     batchnorm1 = layers.BatchNormalization()(conv)
     leaky_relu = layers.LeakyReLU(0.2)(batchnorm1)
 
     # Final layer reducing to a patch output
     zero_pad2 = layers.ZeroPadding2D()(leaky_relu) # (bs, 33, 33, 512)
+    print(f"Disc ZeroPad2 shape: {zero_pad2.shape}") # Debug
+
+    # Output logits (1 channel for real/fake prediction)
     last = layers.Conv2D(1, 4, strides=1,
-                        kernel_initializer=initializer)(zero_pad2) # (bs, 30, 30, 1) Output logits
+                        kernel_initializer=initializer)(zero_pad2) # (bs, 30, 30, 1)
+    print(f"Disc Output shape: {last.shape}") # Debug
 
     return tf.keras.Model(inputs=[segmap_input, condition_input], outputs=last, name='discriminator')
-
 
 # --- Main Class ---
 
