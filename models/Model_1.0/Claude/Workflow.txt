@@ -1,7 +1,14 @@
+Anaconda Prompt and run:
+conda activate tf_env
+pip install Pillow
+
+
 Example Workflow
 Here's a complete workflow to train and use the model:
 
 Prepare your dataset as described above
+pip install torch torchvision opencv-python-headless Pillow numpy tqdm
+
 
 1. Generate metadata for analysis:
 python generate_metadata.py --dataset dataset --output data/raw

@@ -10,7 +10,7 @@ import glob
 BASE_DATA_DIR = "./dataset"
 
 # Output CSV file name for the metadata
-METADATA_FILENAME = "floor_plan_metadata_v1.csv" # Version 3
+METADATA_FILENAME = "floor_plan_metadata_v3.csv" # Version 3
 
 # Mapping from directory names to canonical PlotSize and dimensions
 PLOT_INFO_FROM_DIR = {

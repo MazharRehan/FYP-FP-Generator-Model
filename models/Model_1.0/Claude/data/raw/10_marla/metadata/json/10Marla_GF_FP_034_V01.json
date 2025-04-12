@@ -1,0 +1,51 @@
+{
+  "file_name": "10Marla_GF_FP_034_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "034",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "Garage": 1,
+    "Lounge/Sitting Area": 1,
+    "Stairs": 14,
+    "Prayer Room": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 217043,
+    "Bathroom": 36300,
+    "Kitchen": 80314,
+    "Garage": 211873,
+    "Lounge/Sitting Area": 291164,
+    "Stairs": 13207,
+    "Prayer Room": 424,
+    "Lobby": 41469,
+    "Lawn": 76632,
+    "Passage": 174355
+  },
+  "total_area_pixels": 1142781,
+  "analysis_date": "2025-04-12 02:20:04"
+}

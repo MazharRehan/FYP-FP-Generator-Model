@@ -11,7 +11,7 @@ from tqdm.notebook import tqdm # Use standard tqdm if not in notebook
 import random # Needed for shuffling groups
 
 # --- Configuration --- (Same as before)
-METADATA_FILENAME = "./floor_plan_metadata_v2.csv" # <<< MAKE SURE this is the correct CSV name (v3 from previous fix)
+METADATA_FILENAME = "./floor_plan_metadata_v2.csv" # <<< MAKE SURE this is the correct CSV name
 BASE_DATA_DIR = "./dataset"
 BATCH_SIZE = 4
 NUM_WORKERS = 0
@@ -74,7 +74,6 @@ def prepare_condition_vector(metadata_row, plot_size_categories, room_count_cols
     except Exception as e: logging.error(f"Condition vector error for {metadata_row.get('Filename', 'N/A')}: {e}"); return None
 
 # --- Dataset Class (FloorPlanDataset) ---
-# (This class remains exactly the same as before)
 class FloorPlanDataset(Dataset):
     def __init__(self, metadata_df, base_dir, color_to_id_map,
                  plot_size_categories, room_count_cols, transform=None):
