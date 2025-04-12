@@ -1,0 +1,45 @@
+{
+  "file_name": "5Marla_GF_FP_003_V03.png",
+  "plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "003",
+  "version": "V03",
+  "dimensions": {
+    "feet": [
+      25,
+      45
+    ],
+    "inches": [
+      6.338,
+      11.338
+    ],
+    "pixels": [
+      608,
+      1088
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.559,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 3,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "Drawing Room": 1,
+    "Garage": 1,
+    "Stairs": 13,
+    "Lobby": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 241501,
+    "Bathroom": 34122,
+    "Kitchen": 43573,
+    "Drawing Room": 78223,
+    "Garage": 135345,
+    "Stairs": 18047,
+    "Lobby": 40860
+  },
+  "total_area_pixels": 591671,
+  "analysis_date": "2025-04-12 02:20:29"
+}

@@ -1,0 +1,19 @@
+1.
+Data Ingestion and Metadata Association
+step1.2.py  ---> Crate Draft CSV file
+
+2. Count Number of rooms and update CSV file
+pip install pandas torch torchvision opencv-python-headless Pillow numpy tqdm
+auto_count_rooms.py
+
+
+
+
+
+this is the final metadata we created from floor plans. Now moving forward to 1 step ahead. we need to calculate area of each room type.
+
+csv file will look like this:
+bedroom_count, bedroom_area_1, bedroom_area_2,... same case for other type of rooms.
+
+How we calculate area
+
