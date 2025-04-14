@@ -14,7 +14,7 @@ pip install torch torchvision opencv-python-headless Pillow numpy tqdm
 python generate_metadata.py --dataset dataset --output data/raw
 
 2. Train your model:
-python floor_plan_generator.py --mode train --dataset_path dataset --output_dir output --epochs 200
+python floor_plan_generator.py --mode train --dataset_path dataset --output_dir output --epochs 80
 
 3. Evaluate results:
 python floor_plan_generator.py --mode evaluate --dataset_path dataset --output_dir evaluation_results
