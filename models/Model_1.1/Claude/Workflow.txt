@@ -19,6 +19,8 @@ python floor_plan_generator.py --mode train --dataset_path dataset --output_dir 
 3. Evaluate results:
 python floor_plan_generator.py --mode evaluate --dataset_path dataset --output_dir evaluation_results
 python evaluate_model.py --dataset_path dataset --model_path generator_model.h5 --output_dir evaluation_results
+new file model1.1
+python evaluate_model.py --generator_path generator_model.h5 --dataset_path dataset --output_dir evaluation_results --num_samples 10
 
 4. Generate new floor plans:
 python floor_plan_generator.py --mode generate --plot_type 10_marla --num_samples 10 --output_dir generated_plans
