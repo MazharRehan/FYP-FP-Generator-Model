@@ -1,0 +1,9 @@
+conda init
+conda activate floorplan-env
+
+1. 0_generate_metadata_CreateDraftFile.py
+2. 1_generate_metadata_count.py
+3. 1_generate_metadata_count_v2.py
+commandline run:
+python 1_generate_metadata_count_v2.py --dataset "./dataset" --output "./data/raw" --csv_output "floor_plan_metadata_extended.csv" --min_area 80 --debug
+

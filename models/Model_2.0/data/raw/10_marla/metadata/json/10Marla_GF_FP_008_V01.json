@@ -1,0 +1,126 @@
+{
+  "file_name": "10Marla_GF_FP_008_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "008",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 15,
+    "Store": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 2,
+    "DressingArea": 2
+  },
+  "room_areas_pixels": {
+    "Bedroom": 280067,
+    "Bathroom": 42212,
+    "Kitchen": 76636,
+    "DrawingRoom": 101474,
+    "Garage": 192938,
+    "Lounge": 165990,
+    "Stairs": 19300,
+    "Store": 32837,
+    "Lobby": 48383,
+    "Lawn": 56021,
+    "Passage": 161662,
+    "DressingArea": 36414
+  },
+  "total_area_pixels": 1213934,
+  "room_areas_sqft": {
+    "Bedroom": 478.01,
+    "Bathroom": 72.05,
+    "Kitchen": 130.8,
+    "DrawingRoom": 173.19,
+    "Garage": 329.3,
+    "Lounge": 283.31,
+    "Stairs": 32.94,
+    "Store": 56.05,
+    "Lobby": 82.58,
+    "Lawn": 95.61,
+    "Passage": 275.92,
+    "DressingArea": 62.15
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      254.53,
+      223.48
+    ],
+    "Bathroom": [
+      44.25,
+      27.8
+    ],
+    "Kitchen": [
+      130.8
+    ],
+    "DrawingRoom": [
+      173.19
+    ],
+    "Garage": [
+      329.3
+    ],
+    "Lounge": [
+      283.31
+    ],
+    "Stairs": [
+      7.38,
+      2.36,
+      2.36,
+      2.33,
+      2.24,
+      2.24,
+      2.24,
+      2.24,
+      1.82,
+      1.57,
+      1.41,
+      1.41,
+      1.16,
+      1.13,
+      1.07
+    ],
+    "Store": [
+      56.05
+    ],
+    "PrayerRoom": [],
+    "Lobby": [
+      82.58
+    ],
+    "Lawn": [
+      95.61
+    ],
+    "Passage": [
+      274.81,
+      1.11
+    ],
+    "DressingArea": [
+      35.38,
+      26.77
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:32"
+}

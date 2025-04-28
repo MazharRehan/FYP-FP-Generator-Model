@@ -1,0 +1,122 @@
+{
+  "file_name": "10Marla_GF_FP_010_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "010",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 3,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 18,
+    "OpenSpace": 1,
+    "Lawn": 1,
+    "Passage": 1,
+    "DressingArea": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 284116,
+    "Bathroom": 72128,
+    "Kitchen": 71907,
+    "DrawingRoom": 129719,
+    "Garage": 230966,
+    "Lounge": 243806,
+    "Stairs": 21180,
+    "OpenSpace": 10232,
+    "Lawn": 55672,
+    "Passage": 57904,
+    "DressingArea": 28602
+  },
+  "total_area_pixels": 1206232,
+  "room_areas_sqft": {
+    "Bedroom": 484.92,
+    "Bathroom": 123.11,
+    "Kitchen": 122.73,
+    "DrawingRoom": 221.4,
+    "Garage": 394.2,
+    "Lounge": 416.12,
+    "Stairs": 36.15,
+    "OpenSpace": 17.46,
+    "Lawn": 95.02,
+    "Passage": 98.83,
+    "DressingArea": 48.82
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      199.79,
+      144.06,
+      141.07
+    ],
+    "Bathroom": [
+      63.88,
+      36.83,
+      22.4
+    ],
+    "Kitchen": [
+      122.73
+    ],
+    "DrawingRoom": [
+      221.4
+    ],
+    "Garage": [
+      394.2
+    ],
+    "Lounge": [
+      416.12
+    ],
+    "Stairs": [
+      5.66,
+      2.98,
+      2.22,
+      2.15,
+      2.15,
+      2.15,
+      2.15,
+      2.15,
+      2.15,
+      2.12,
+      1.45,
+      1.45,
+      1.45,
+      1.39,
+      1.39,
+      1.04,
+      1.04,
+      1.04
+    ],
+    "OpenSpace": [
+      17.46
+    ],
+    "Lawn": [
+      95.02
+    ],
+    "Passage": [
+      98.83
+    ],
+    "DressingArea": [
+      48.82
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:33"
+}

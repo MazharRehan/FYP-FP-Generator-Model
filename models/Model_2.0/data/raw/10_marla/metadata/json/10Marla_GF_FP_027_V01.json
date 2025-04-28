@@ -1,0 +1,147 @@
+{
+  "file_name": "10Marla_GF_FP_027_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "027",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 25,
+    "Store": 1,
+    "OpenSpace": 2,
+    "PrayerRoom": 1,
+    "Lobby": 2,
+    "Lawn": 1,
+    "Passage": 1,
+    "DressingArea": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 216179,
+    "Bathroom": 52155,
+    "Kitchen": 58500,
+    "DrawingRoom": 151173,
+    "Garage": 220570,
+    "Lounge": 109082,
+    "Stairs": 20672,
+    "Store": 35904,
+    "OpenSpace": 41965,
+    "PrayerRoom": 425,
+    "Lobby": 88245,
+    "Lawn": 52318,
+    "Passage": 138257,
+    "DressingArea": 15532
+  },
+  "total_area_pixels": 1200977,
+  "room_areas_sqft": {
+    "Bedroom": 368.97,
+    "Bathroom": 89.02,
+    "Kitchen": 99.85,
+    "DrawingRoom": 258.02,
+    "Garage": 376.46,
+    "Lounge": 186.18,
+    "Stairs": 35.28,
+    "Store": 61.28,
+    "OpenSpace": 71.62,
+    "PrayerRoom": 0.73,
+    "Lobby": 150.61,
+    "Lawn": 89.29,
+    "Passage": 235.97,
+    "DressingArea": 26.51
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      206.66,
+      162.3
+    ],
+    "Bathroom": [
+      64.98,
+      24.03
+    ],
+    "Kitchen": [
+      99.85
+    ],
+    "DrawingRoom": [
+      258.02
+    ],
+    "Garage": [
+      376.46
+    ],
+    "Lounge": [
+      186.18
+    ],
+    "Stairs": [
+      2.9,
+      2.77,
+      1.98,
+      1.96,
+      1.96,
+      1.95,
+      1.92,
+      1.88,
+      1.85,
+      1.34,
+      1.27,
+      1.26,
+      1.12,
+      0.96,
+      0.96,
+      0.96,
+      0.96,
+      0.96,
+      0.92,
+      0.91,
+      0.91,
+      0.91,
+      0.91,
+      0.91,
+      0.88
+    ],
+    "Store": [
+      61.28
+    ],
+    "OpenSpace": [
+      42.04,
+      29.59
+    ],
+    "PrayerRoom": [
+      0.73
+    ],
+    "Lobby": [
+      116.65,
+      33.96
+    ],
+    "Lawn": [
+      89.29
+    ],
+    "Passage": [
+      235.97
+    ],
+    "DressingArea": [
+      26.51
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:40"
+}

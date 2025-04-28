@@ -1,0 +1,124 @@
+{
+  "file_name": "10Marla_GF_FP_043_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "043",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 21,
+    "PrayerRoom": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 132336,
+    "Bathroom": 43813,
+    "Kitchen": 59918,
+    "DrawingRoom": 76900,
+    "Garage": 269064,
+    "Lounge": 234884,
+    "Stairs": 21793,
+    "PrayerRoom": 521,
+    "Lobby": 21516,
+    "Lawn": 72528,
+    "Passage": 242245
+  },
+  "total_area_pixels": 1175518,
+  "room_areas_sqft": {
+    "Bedroom": 225.87,
+    "Bathroom": 74.78,
+    "Kitchen": 102.27,
+    "DrawingRoom": 131.25,
+    "Garage": 459.23,
+    "Lounge": 400.89,
+    "Stairs": 37.2,
+    "PrayerRoom": 0.89,
+    "Lobby": 36.72,
+    "Lawn": 123.79,
+    "Passage": 413.46
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      129.53,
+      96.34
+    ],
+    "Bathroom": [
+      35.22,
+      20.41,
+      19.15
+    ],
+    "Kitchen": [
+      102.27
+    ],
+    "DrawingRoom": [
+      131.25
+    ],
+    "Garage": [
+      459.23
+    ],
+    "Lounge": [
+      400.89
+    ],
+    "Stairs": [
+      3.91,
+      2.46,
+      2.36,
+      2.11,
+      2.11,
+      2.11,
+      2.11,
+      2.0,
+      2.0,
+      2.0,
+      1.97,
+      1.88,
+      1.44,
+      1.22,
+      1.18,
+      1.16,
+      1.13,
+      1.04,
+      1.04,
+      1.01,
+      1.01
+    ],
+    "PrayerRoom": [
+      0.89
+    ],
+    "Lobby": [
+      36.72
+    ],
+    "Lawn": [
+      123.79
+    ],
+    "Passage": [
+      413.46
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:48"
+}
