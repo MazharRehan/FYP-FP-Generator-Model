@@ -1,0 +1,131 @@
+{
+  "file_name": "10Marla_GF_FP_031_V04.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "031",
+  "version": "V04",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 1,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 20,
+    "Lobby": 1,
+    "Lawn": 1,
+    "ServantQuarter": 1,
+    "Passage": 4,
+    "DressingArea": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 105264,
+    "Bathroom": 55794,
+    "Kitchen": 38955,
+    "DrawingRoom": 84760,
+    "Garage": 203504,
+    "Lounge": 191486,
+    "Stairs": 13565,
+    "Lobby": 22924,
+    "Lawn": 125941,
+    "ServantQuarter": 23787,
+    "Passage": 210692,
+    "DressingArea": 12011
+  },
+  "total_area_pixels": 1088683,
+  "room_areas_sqft": {
+    "Bedroom": 179.66,
+    "Bathroom": 95.23,
+    "Kitchen": 66.49,
+    "DrawingRoom": 144.67,
+    "Garage": 347.33,
+    "Lounge": 326.82,
+    "Stairs": 23.15,
+    "Lobby": 39.13,
+    "Lawn": 214.95,
+    "ServantQuarter": 40.6,
+    "Passage": 359.6,
+    "DressingArea": 20.5
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      179.66
+    ],
+    "Bathroom": [
+      43.78,
+      33.1,
+      18.35
+    ],
+    "Kitchen": [
+      66.49
+    ],
+    "DrawingRoom": [
+      144.67
+    ],
+    "Garage": [
+      347.33
+    ],
+    "Lounge": [
+      326.82
+    ],
+    "Stairs": [
+      2.41,
+      2.25,
+      1.62,
+      1.56,
+      1.54,
+      1.53,
+      1.48,
+      1.45,
+      0.93,
+      0.93,
+      0.9,
+      0.87,
+      0.73,
+      0.73,
+      0.73,
+      0.73,
+      0.7,
+      0.7,
+      0.7,
+      0.7
+    ],
+    "Lobby": [
+      39.13
+    ],
+    "Lawn": [
+      214.95
+    ],
+    "ServantQuarter": [
+      40.6
+    ],
+    "Passage": [
+      358.17,
+      0.96,
+      0.26,
+      0.2
+    ],
+    "DressingArea": [
+      20.5
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:42"
+}

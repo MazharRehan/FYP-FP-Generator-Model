@@ -1,0 +1,125 @@
+{
+  "file_name": "10Marla_GF_FP_035_V01.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "035",
+  "version": "V01",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 21,
+    "PrayerRoom": 2,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 2
+  },
+  "room_areas_pixels": {
+    "Bedroom": 193800,
+    "Bathroom": 32257,
+    "Kitchen": 99224,
+    "DrawingRoom": 116426,
+    "Garage": 211931,
+    "Lounge": 228967,
+    "Stairs": 23982,
+    "PrayerRoom": 30825,
+    "Lobby": 57733,
+    "Lawn": 107880,
+    "Passage": 106299
+  },
+  "total_area_pixels": 1209324,
+  "room_areas_sqft": {
+    "Bedroom": 330.77,
+    "Bathroom": 55.06,
+    "Kitchen": 169.35,
+    "DrawingRoom": 198.71,
+    "Garage": 361.72,
+    "Lounge": 390.79,
+    "Stairs": 40.93,
+    "PrayerRoom": 52.61,
+    "Lobby": 98.54,
+    "Lawn": 184.13,
+    "Passage": 181.43
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      167.21,
+      163.56
+    ],
+    "Bathroom": [
+      28.13,
+      26.93
+    ],
+    "Kitchen": [
+      169.35
+    ],
+    "DrawingRoom": [
+      198.71
+    ],
+    "Garage": [
+      361.72
+    ],
+    "Lounge": [
+      390.79
+    ],
+    "Stairs": [
+      5.46,
+      3.8,
+      2.72,
+      2.66,
+      2.66,
+      2.15,
+      2.15,
+      2.13,
+      1.94,
+      1.93,
+      1.82,
+      1.32,
+      1.32,
+      1.31,
+      1.31,
+      1.21,
+      1.06,
+      1.02,
+      1.02,
+      0.99,
+      0.92
+    ],
+    "PrayerRoom": [
+      51.89,
+      0.73
+    ],
+    "Lobby": [
+      98.54
+    ],
+    "Lawn": [
+      184.13
+    ],
+    "Passage": [
+      104.97,
+      76.46
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:44"
+}

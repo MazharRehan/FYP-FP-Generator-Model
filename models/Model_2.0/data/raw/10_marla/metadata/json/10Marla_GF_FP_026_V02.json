@@ -1,0 +1,127 @@
+{
+  "file_name": "10Marla_GF_FP_026_V02.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "026",
+  "version": "V02",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 1,
+    "Bathroom": 1,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 38,
+    "OpenSpace": 1,
+    "Passage": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 156088,
+    "Bathroom": 45081,
+    "Kitchen": 126673,
+    "DrawingRoom": 191804,
+    "Garage": 325295,
+    "Lounge": 234056,
+    "Stairs": 33056,
+    "OpenSpace": 23949,
+    "Passage": 65086
+  },
+  "total_area_pixels": 1201088,
+  "room_areas_sqft": {
+    "Bedroom": 266.41,
+    "Bathroom": 76.94,
+    "Kitchen": 216.2,
+    "DrawingRoom": 327.36,
+    "Garage": 555.2,
+    "Lounge": 399.48,
+    "Stairs": 56.42,
+    "OpenSpace": 40.88,
+    "Passage": 111.09
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      266.41
+    ],
+    "Bathroom": [
+      76.94
+    ],
+    "Kitchen": [
+      216.2
+    ],
+    "DrawingRoom": [
+      327.36
+    ],
+    "Garage": [
+      555.2
+    ],
+    "Lounge": [
+      399.48
+    ],
+    "Stairs": [
+      6.34,
+      2.53,
+      2.53,
+      1.86,
+      1.79,
+      1.75,
+      1.75,
+      1.75,
+      1.75,
+      1.75,
+      1.69,
+      1.69,
+      1.67,
+      1.65,
+      1.64,
+      1.64,
+      1.64,
+      1.64,
+      1.64,
+      1.56,
+      1.56,
+      1.51,
+      1.06,
+      1.03,
+      0.86,
+      0.84,
+      0.84,
+      0.84,
+      0.84,
+      0.8,
+      0.8,
+      0.78,
+      0.77,
+      0.77,
+      0.75,
+      0.73,
+      0.71,
+      0.7
+    ],
+    "OpenSpace": [
+      40.88
+    ],
+    "PrayerRoom": [],
+    "Passage": [
+      111.09
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:39"
+}
