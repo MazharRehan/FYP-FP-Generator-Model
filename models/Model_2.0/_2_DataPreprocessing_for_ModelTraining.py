@@ -4,6 +4,10 @@ import pandas as pd
 import os
 from tensorflow.keras.utils import to_categorical
 
+import glob
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from sklearn.model_selection import train_test_split
+
 
 def preprocess_data(image_dir, metadata_csv, target_size=(256, 256), validation_split=0.2):
     """
@@ -19,6 +23,7 @@ def preprocess_data(image_dir, metadata_csv, target_size=(256, 256), validation_
         X_train, y_train, X_val, y_val, metadata_train, metadata_val
     """
     # Load metadata
+    global image_lookup
     df = pd.read_csv(metadata_csv)
 
     # Extract features for conditioning
@@ -30,7 +35,19 @@ def preprocess_data(image_dir, metadata_csv, target_size=(256, 256), validation_
 
     # Process each image and its metadata
     for _, row in df.iterrows():
-        img_path = os.path.join(image_dir, row['FilePath'])
+        # img_path = os.path.join(image_dir, row['FilePath'])
+
+        # Glob all subdirectory images once (outside loop)
+        if 'all_image_paths' not in globals():
+            all_image_paths = glob.glob(os.path.join(image_dir, '**', '*.png'), recursive=True)
+            image_lookup = {os.path.basename(path): path for path in all_image_paths}
+
+        filename = row['FilePath']  # This is just "plan_001.png"
+        img_path = image_lookup.get(filename)
+        if img_path is None:
+            print(f"Image not found for {filename}")
+            continue
+
         try:
             # Load and resize image
             img = cv2.imread(img_path)

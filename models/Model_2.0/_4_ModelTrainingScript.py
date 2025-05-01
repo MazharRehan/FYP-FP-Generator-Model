@@ -1,3 +1,9 @@
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+
+
 def train_cgan(generator, discriminator, cgan, X_train, metadata_train,
                latent_dim, batch_size=32, epochs=100, save_interval=10):
     """

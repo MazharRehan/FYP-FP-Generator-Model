@@ -1,8 +1,16 @@
+import matplotlib.pyplot as plt
+from _2_DataPreprocessing_for_ModelTraining import preprocess_data
+from _3_CGANModelArchitecture import build_generator, build_discriminator, build_cgan
+from _4_ModelTrainingScript import train_cgan, save_generated_images
+# from keras import optimizers
+from tensorflow.keras.optimizers import Adam
+opt = Adam(0.0001, 0.5, clipvalue=1.0)
+
 if __name__ == "__main__":
     # Parameters
     latent_dim = 100
-    batch_size = 32
-    epochs = 500
+    batch_size = 8 # 32
+    epochs = 30
     save_interval = 10
     image_size = (256, 256)
 
@@ -25,7 +33,8 @@ if __name__ == "__main__":
     # Compile discriminator
     discriminator.compile(
         loss='binary_crossentropy',
-        optimizer=optimizers.Adam(0.0002, 0.5),
+        optimizer=Adam(0.0001, 0.5, clipvalue=1.0),
+        # optimizer=optimizers.Adam(0.0001, 0.5),
         metrics=['accuracy']
     )
 
@@ -35,7 +44,8 @@ if __name__ == "__main__":
     # Compile combined model
     cgan.compile(
         loss='binary_crossentropy',
-        optimizer=optimizers.Adam(0.0002, 0.5)
+        optimizer=Adam(0.0001, 0.5, clipvalue=1.0),
+        # optimizer=optimizers.Adam(0.0001, 0.5)
     )
 
     # Print model summaries
