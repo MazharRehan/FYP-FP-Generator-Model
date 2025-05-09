@@ -20,4 +20,10 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        git ls-files '*.py' | xargs pylint
+        FILES=$(git ls-files '*.py')
+        if [ -n "$FILES" ]; then
+          echo "$FILES" | xargs pylint
+        else
+          echo "No Python files found to lint."
+        fi
+
