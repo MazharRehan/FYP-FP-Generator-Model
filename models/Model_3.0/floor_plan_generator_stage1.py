@@ -16,32 +16,32 @@ tf.random.set_seed(42)
 # Configuration
 class Config:
     # Data parameters
-    DATA_DIR = "data/"
-    METADATA_PATH = "models/Model_2.0/floor_plan_metadata_v5_includingArea.csv"
+    DATA_DIR = "dataset/"
+    METADATA_PATH = "floor_plan_metadata_v5_includingArea.csv"
     IMAGE_WIDTH = 849
     IMAGE_HEIGHT = 1570
     PLOT_SIZE = "10Marla"
-    
+
     # Model parameters
     LATENT_DIM = 128
     CONDITION_DIM = 32
     INITIAL_DIM = 64  # Initial filter size
-    
-    # Initial smaller dimensions for stage 1
-    GEN_INPUT_WIDTH = 106  # IMAGE_WIDTH // 8
-    GEN_INPUT_HEIGHT = 196  # IMAGE_HEIGHT // 8
-    
+
+    # Initial smaller dimensions for stage 1 - using powers of 2 for clean division
+    GEN_INPUT_WIDTH = 128  # Must be divisible by 16 (2^4)
+    GEN_INPUT_HEIGHT = 128  # Must be divisible by 16 (2^4)
+
     # Training parameters
-    BATCH_SIZE = 8
+    BATCH_SIZE = 4  # Reduced batch size for better stability
     EPOCHS = 100
     LEARNING_RATE = 0.0002
     BETA_1 = 0.5  # Adam optimizer parameter
     BETA_2 = 0.999  # Adam optimizer parameter
-    
+
     # WGAN-GP parameters
     GP_WEIGHT = 10.0
     CRITIC_ITERATIONS = 5
-    
+
     # Output directories
     CHECKPOINT_DIR = "checkpoints/stage1/"
     LOG_DIR = "logs/stage1/"
@@ -65,24 +65,27 @@ def preprocess_image(image_path):
     # Load image
     img = Image.open(image_path).convert('RGB')
     img = np.array(img)
-    
+
     # Extract walls (black pixels)
     walls = np.all(img == [0, 0, 0], axis=-1).astype(np.float32)
-    
+
     # Extract room boundaries (any colored area)
     rooms = np.any(img > 0, axis=-1).astype(np.float32)
-    
+
     # Combine: 1 channel for walls, 1 for room areas
     boundary_map = np.stack([walls, rooms], axis=-1)
-    
-    # Resize to target dimensions (smaller for stage 1)
-    boundary_map = cv2.resize(boundary_map, 
-                             (Config.GEN_INPUT_WIDTH * 8, Config.GEN_INPUT_HEIGHT * 8),
-                             interpolation=cv2.INTER_NEAREST)
-    
+
+    # Resize to target dimensions (use exact dimensions that match our model architecture)
+    target_height = Config.GEN_INPUT_HEIGHT * 8  # Final output size
+    target_width = Config.GEN_INPUT_WIDTH * 8
+
+    boundary_map = cv2.resize(boundary_map,
+                              (target_width, target_height),
+                              interpolation=cv2.INTER_NEAREST)
+
     # Normalize to [-1, 1]
     boundary_map = boundary_map * 2.0 - 1.0
-    
+
     return boundary_map
 
 def prepare_condition_vector(row):
@@ -155,83 +158,124 @@ def build_generator():
     """U-Net-based generator with conditional inputs."""
     # Latent vector input
     noise_input = layers.Input(shape=(Config.LATENT_DIM,), name='noise_input')
-    
+
     # Conditional input (room counts, etc.)
     condition_input = layers.Input(shape=(Config.CONDITION_DIM,), name='condition_input')
-    
+
     # Combine noise and condition
     combined_input = layers.Concatenate()([noise_input, condition_input])
-    
-    # Dense layer to create initial feature map
-    x = layers.Dense(Config.GEN_INPUT_HEIGHT * Config.GEN_INPUT_WIDTH * Config.INITIAL_DIM)(combined_input)
+
+    # Calculate sizes to ensure symmetrical downsampling and upsampling
+    # Make sure these divide evenly by 2^num_downsamples
+    target_height = Config.GEN_INPUT_HEIGHT
+    target_width = Config.GEN_INPUT_WIDTH
+
+    # Make sure dimensions are powers of 2 for clean division
+    initial_height = target_height
+    initial_width = target_width
+
+    # First dense layer to create initial feature map
+    x = layers.Dense(initial_height * initial_width * Config.INITIAL_DIM)(combined_input)
     x = layers.BatchNormalization()(x)
     x = layers.LeakyReLU(0.2)(x)
-    x = layers.Reshape((Config.GEN_INPUT_HEIGHT, Config.GEN_INPUT_WIDTH, Config.INITIAL_DIM))(x)
-    
-    # Encoder path with skip connections
+    x = layers.Reshape((initial_height, initial_width, Config.INITIAL_DIM))(x)
+
+    # Save the shapes for the skip connections
+    skip_shapes = []
     skip_connections = []
-    filter_sizes = [Config.INITIAL_DIM * mult for mult in [1, 2, 4, 8, 16]]
-    
-    # Encoder blocks
-    for i, filters in enumerate(filter_sizes[:-1]):
+
+    # Encoder path
+    filter_sizes = [Config.INITIAL_DIM * mult for mult in [1, 2, 4, 8]]
+
+    # Encoder blocks - save input shape before each convolution
+    for filters in filter_sizes:
+        # Save for skip connection
+        skip_connections.append(x)
+        skip_shapes.append((x.shape[1], x.shape[2]))  # Height, Width
+
+        # Conv block
         x = layers.Conv2D(filters, 4, strides=2, padding='same')(x)
         x = layers.BatchNormalization()(x)
         x = layers.LeakyReLU(0.2)(x)
-        skip_connections.append(x)
-    
+
     # Bottleneck
-    x = layers.Conv2D(filter_sizes[-1], 4, strides=2, padding='same')(x)
+    # Inject condition at bottleneck
+    condition_dense = layers.Dense(filter_sizes[-1])(condition_input)
+    condition_dense = layers.LeakyReLU(0.2)(condition_dense)
+    condition_dense = layers.Dense(int(x.shape[1]) * int(x.shape[2]) * filter_sizes[-1])(condition_dense)
+    condition_reshaped = layers.Reshape((int(x.shape[1]), int(x.shape[2]), filter_sizes[-1]))(condition_dense)
+    x = layers.Concatenate()([x, condition_reshaped])
+
+    # Extra convolution at bottleneck
+    x = layers.Conv2D(filter_sizes[-1] * 2, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
     x = layers.LeakyReLU(0.2)(x)
-    
-    # Inject condition at bottleneck
-    condition_dense = layers.Dense(filter_sizes[-1] // 4)(condition_input)
-    condition_dense = layers.LeakyReLU(0.2)(condition_dense)
-    condition_dense = layers.Dense(x.shape[1] * x.shape[2] * filter_sizes[-1] // 4)(condition_dense)
-    condition_reshaped = layers.Reshape((x.shape[1], x.shape[2], filter_sizes[-1] // 4))(condition_dense)
-    x = layers.Concatenate()([x, condition_reshaped])
-    
+
     # Decoder blocks with skip connections
-    for i, filters in enumerate(reversed(filter_sizes[:-1])):
-        x = layers.Conv2DTranspose(filters, 4, strides=2, padding='same')(x)
+    # We'll use the stored shapes to ensure proper dimensions
+    for i, filters in enumerate(reversed(filter_sizes)):
+        # Print shape information for debugging
+        print(f"Upsampling to shape: {skip_shapes[-(i + 1)]}")
+
+        # Upsample to match skip connection dimensions
+        x = layers.Conv2DTranspose(
+            filters, 4, strides=2,
+            padding='same',
+            output_padding=1 if i == 0 else 0  # Adjust first upsample if needed
+        )(x)
         x = layers.BatchNormalization()(x)
         x = layers.ReLU()(x)
+
+        # Ensure exact shape match before concatenation
+        if x.shape[1:3] != skip_connections[-(i + 1)].shape[1:3]:
+            target_h, target_w = skip_shapes[-(i + 1)]
+            x = layers.Resizing(target_h, target_w)(x)
+
         # Add skip connection
-        x = layers.Concatenate()([x, skip_connections[-(i+1)]])
-    
-    # Output layer
-    x = layers.Conv2DTranspose(2, 4, strides=2, padding='same', activation='tanh')(x)
-    
+        x = layers.Concatenate()([x, skip_connections[-(i + 1)]])
+
+    # Final upsampling to target size
+    x = layers.Conv2DTranspose(64, 4, strides=2, padding='same')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.ReLU()(x)
+
+    # Output layer - 2 channels (walls, room areas)
+    x = layers.Conv2D(2, 4, padding='same', activation='tanh')(x)
+
     return models.Model([noise_input, condition_input], x, name='generator')
 
 def build_discriminator():
     """PatchGAN discriminator with conditional input."""
+    # Image input - match generator output size
+    image_height = Config.GEN_INPUT_HEIGHT * 8
+    image_width = Config.GEN_INPUT_WIDTH * 8
+
     # Image input
-    image_input = layers.Input(shape=(Config.GEN_INPUT_HEIGHT*8, Config.GEN_INPUT_WIDTH*8, 2), 
-                              name='image_input')
-    
+    image_input = layers.Input(shape=(image_height, image_width, 2),
+                               name='image_input')
+
     # Conditional input
     condition_input = layers.Input(shape=(Config.CONDITION_DIM,), name='condition_input')
-    
+
     # Process conditional input
-    condition_dense = layers.Dense(Config.GEN_INPUT_HEIGHT*8 * Config.GEN_INPUT_WIDTH*8)(condition_input)
-    condition_reshaped = layers.Reshape((Config.GEN_INPUT_HEIGHT*8, Config.GEN_INPUT_WIDTH*8, 1))(condition_dense)
-    
+    condition_dense = layers.Dense(image_height * image_width)(condition_input)
+    condition_reshaped = layers.Reshape((image_height, image_width, 1))(condition_dense)
+
     # Concatenate image with condition
     x = layers.Concatenate()([image_input, condition_reshaped])
-    
+
     # Downsampling layers
     filter_sizes = [64, 128, 256, 512]
-    
+
     for filters in filter_sizes:
         x = layers.Conv2D(filters, 4, strides=2, padding='same')(x)
         x = layers.LeakyReLU(0.2)(x)
         # Use layer normalization instead of batch normalization for WGAN-GP
         x = layers.LayerNormalization()(x)
-    
+
     # Output layer (no sigmoid for WGAN)
     x = layers.Conv2D(1, 4, strides=1, padding='same')(x)
-    
+
     return models.Model([image_input, condition_input], x, name='discriminator')
 
 # WGAN-GP Functions
@@ -357,6 +401,9 @@ def generate_samples(generator, condition_samples, epoch):
 
 # Training Script
 def train():
+    # Enable eager execution for better debugging
+    tf.config.run_functions_eagerly(True)
+
     print("Loading metadata...")
     df = load_metadata()
     print(f"Found {len(df)} floor plans for {Config.PLOT_SIZE}")

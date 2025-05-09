@@ -1,18 +1,22 @@
-conda create -n floorplan-env-30 python=3.8
+// conda create -n floorplan-env-30 python=3.8
 conda init
 conda activate floorplan-env-30
 
 
-Training:
+Data Preparation:
+floor plan images in the --> data/ directory
+metadata CSV file path is correctly specified in Config
+
+1. Training:
 python floor_plan_generator_stage1.py
 ----> logs/stage1/
 checkpoints/stage1/
 samples/stage1/
 
-Evaluation:
+2. Evaluation:
 evaluate_model.py
 ---> evaluation/stage1/
 
-Inference:
+3. Inference:
 python inference.py
 ---> generated/
