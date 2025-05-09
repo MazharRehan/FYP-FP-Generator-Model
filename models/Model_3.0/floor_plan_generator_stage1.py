@@ -221,7 +221,7 @@ def build_generator():
         x = layers.Conv2DTranspose(
             filters, 4, strides=2,
             padding='same',
-            output_padding=1 if i == 0 else 0  # Adjust first upsample if needed
+            output_padding=(1, 1) if i == 0 else (0, 0)  # Adjust first upsample if needed
         )(x)
         x = layers.BatchNormalization()(x)
         x = layers.ReLU()(x)
@@ -236,6 +236,7 @@ def build_generator():
 
     # Final upsampling to target size
     x = layers.Conv2DTranspose(64, 4, strides=2, padding='same')(x)
+
     x = layers.BatchNormalization()(x)
     x = layers.ReLU()(x)
 
