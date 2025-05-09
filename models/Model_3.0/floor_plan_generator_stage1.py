@@ -94,11 +94,13 @@ def prepare_condition_vector(row):
     # Get room counts from the row
     room_counts = []
 
-    # Extract bathroom count
-    room_counts.append(row['Count_Bathroom'] / 4.0 if pd.notna(row['Count_Bathroom']) else 0.0)
+    # Extract bathroom count (with NaN handling)
+    bathroom_count = row['Count_Bathroom'] if pd.notna(row['Count_Bathroom']) else 0.0
+    room_counts.append(bathroom_count / 4.0)  # Normalize by max count
 
-    # Extract bedroom count
-    room_counts.append(row['Count_Bedroom'] / 3.0 if pd.notna(row['Count_Bedroom']) else 0.0)
+    # Extract bedroom count (with NaN handling)
+    bedroom_count = row['Count_Bedroom'] if pd.notna(row['Count_Bedroom']) else 0.0
+    room_counts.append(bedroom_count / 3.0)  # Normalize by max count
 
     # Extract other important rooms (presence as 0 or 1)
     room_types = ['DrawingRoom', 'Kitchen', 'Dining', 'Lounge', 'Garage']
@@ -109,8 +111,9 @@ def prepare_condition_vector(row):
         else:
             room_counts.append(0.0)
 
-    # Total area (normalized)
-    room_counts.append(row['TotalAreaSqFt'] / 2275.0 if pd.notna(row['TotalAreaSqFt']) else 0.0)
+    # Total area (normalized) (with NaN handling)
+    area = row['TotalAreaSqFt'] if pd.notna(row['TotalAreaSqFt']) else 0.0
+    room_counts.append(area / 2275.0)  # Normalize by max area
 
     # Convert to numpy array
     condition_vector = np.array(room_counts, dtype=np.float32)
@@ -288,28 +291,34 @@ def wasserstein_loss(y_true, y_pred):
     """Wasserstein loss function."""
     return tf.reduce_mean(y_true * y_pred)
 
+
 def gradient_penalty(discriminator, real_images, fake_images, conditions):
     """Gradient penalty for WGAN-GP."""
     batch_size = tf.shape(real_images)[0]
-    
+
+    # Ensure all inputs are tensors with consistent types
+    real_images = tf.convert_to_tensor(real_images, dtype=tf.float32)
+    fake_images = tf.convert_to_tensor(fake_images, dtype=tf.float32)
+    conditions = tf.convert_to_tensor(conditions, dtype=tf.float32)
+
     # Generate random interpolation factors
     alpha = tf.random.uniform(shape=[batch_size, 1, 1, 1], minval=0.0, maxval=1.0)
-    
+
     # Create interpolated images
     interpolated = alpha * real_images + (1 - alpha) * fake_images
-    
+
     with tf.GradientTape() as tape:
         tape.watch(interpolated)
         # Get discriminator output for interpolated images
         pred = discriminator([interpolated, conditions])
-    
+
     # Calculate gradients with respect to inputs
     gradients = tape.gradient(pred, interpolated)
     # Compute the Euclidean norm of the gradients
     gradients_norm = tf.sqrt(tf.reduce_sum(tf.square(gradients), axis=[1, 2, 3]))
     # Calculate the gradient penalty
     gradient_penalty = tf.reduce_mean(tf.square(gradients_norm - 1.0))
-    
+
     return gradient_penalty
 
 class FloorPlanGAN(models.Model):
@@ -322,61 +331,59 @@ class FloorPlanGAN(models.Model):
         super(FloorPlanGAN, self).compile()
         self.gen_optimizer = gen_optimizer
         self.disc_optimizer = disc_optimizer
-        
+
     def train_step(self, data):
         real_images, conditions = data
         batch_size = tf.shape(real_images)[0]
 
-        # Replace NaNs and convert to tensors
-        conditions = tf.convert_to_tensor(
-            np.nan_to_num(conditions, nan=0.0),
-            dtype=tf.float32
-        )
-        
+        # Convert both inputs to TensorFlow tensors
+        real_images = tf.convert_to_tensor(real_images, dtype=tf.float32)
+        conditions = tf.convert_to_tensor(conditions, dtype=tf.float32)
+
         # Train discriminator multiple times
         for i in range(Config.CRITIC_ITERATIONS):
             # Generate random noise
             noise = tf.random.normal([batch_size, Config.LATENT_DIM])
-            
+
             with tf.GradientTape() as tape:
                 # Generate fake images
                 fake_images = self.generator([noise, conditions], training=True)
-                
+
                 # Get discriminator outputs for real and fake images
                 real_output = self.discriminator([real_images, conditions], training=True)
                 fake_output = self.discriminator([fake_images, conditions], training=True)
-                
+
                 # Calculate Wasserstein loss
                 d_loss_real = -tf.reduce_mean(real_output)
                 d_loss_fake = tf.reduce_mean(fake_output)
-                
+
                 # Calculate gradient penalty
                 gp = gradient_penalty(self.discriminator, real_images, fake_images, conditions)
-                
+
                 # Total discriminator loss
                 d_loss = d_loss_real + d_loss_fake + Config.GP_WEIGHT * gp
-            
+
             # Get gradients and update discriminator
             d_gradients = tape.gradient(d_loss, self.discriminator.trainable_variables)
             self.disc_optimizer.apply_gradients(zip(d_gradients, self.discriminator.trainable_variables))
-        
+
         # Train generator
         noise = tf.random.normal([batch_size, Config.LATENT_DIM])
-        
+
         with tf.GradientTape() as tape:
             # Generate fake images
             fake_images = self.generator([noise, conditions], training=True)
-            
+
             # Get discriminator output for fake images
             fake_output = self.discriminator([fake_images, conditions], training=True)
-            
+
             # Calculate generator loss
             g_loss = -tf.reduce_mean(fake_output)
-        
+
         # Get gradients and update generator
         g_gradients = tape.gradient(g_loss, self.generator.trainable_variables)
         self.gen_optimizer.apply_gradients(zip(g_gradients, self.generator.trainable_variables))
-        
+
         return {
             "d_loss": d_loss,
             "d_loss_real": d_loss_real,
