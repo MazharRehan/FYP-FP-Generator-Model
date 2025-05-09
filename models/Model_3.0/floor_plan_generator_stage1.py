@@ -88,37 +88,38 @@ def preprocess_image(image_path):
 
     return boundary_map
 
+
 def prepare_condition_vector(row):
     """Extract conditional inputs from metadata."""
     # Get room counts from the row
     room_counts = []
-    
+
     # Extract bathroom count
-    room_counts.append(row['Count_Bathroom'] / 4.0)  # Normalize by max count
-    
+    room_counts.append(row['Count_Bathroom'] / 4.0 if pd.notna(row['Count_Bathroom']) else 0.0)
+
     # Extract bedroom count
-    room_counts.append(row['Count_Bedroom'] / 3.0)  # Normalize by max count
-    
+    room_counts.append(row['Count_Bedroom'] / 3.0 if pd.notna(row['Count_Bedroom']) else 0.0)
+
     # Extract other important rooms (presence as 0 or 1)
     room_types = ['DrawingRoom', 'Kitchen', 'Dining', 'Lounge', 'Garage']
     for room in room_types:
         count_col = f'Count_{room}'
-        if count_col in row:
+        if count_col in row and pd.notna(row[count_col]):
             room_counts.append(min(row[count_col], 1.0))  # Binary presence
         else:
             room_counts.append(0.0)
-    
+
     # Total area (normalized)
-    room_counts.append(row['TotalAreaSqFt'] / 2275.0)  # Normalize by max area
-    
+    room_counts.append(row['TotalAreaSqFt'] / 2275.0 if pd.notna(row['TotalAreaSqFt']) else 0.0)
+
     # Convert to numpy array
     condition_vector = np.array(room_counts, dtype=np.float32)
-    
+
     # Pad to condition dimension if necessary
     if len(condition_vector) < Config.CONDITION_DIM:
         padding = np.zeros(Config.CONDITION_DIM - len(condition_vector), dtype=np.float32)
         condition_vector = np.concatenate([condition_vector, padding])
-    
+
     return condition_vector
 
 def data_generator(dataframe, batch_size):
@@ -325,6 +326,12 @@ class FloorPlanGAN(models.Model):
     def train_step(self, data):
         real_images, conditions = data
         batch_size = tf.shape(real_images)[0]
+
+        # Replace NaNs and convert to tensors
+        conditions = tf.convert_to_tensor(
+            np.nan_to_num(conditions, nan=0.0),
+            dtype=tf.float32
+        )
         
         # Train discriminator multiple times
         for i in range(Config.CRITIC_ITERATIONS):
