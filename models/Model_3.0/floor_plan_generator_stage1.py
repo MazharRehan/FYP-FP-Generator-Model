@@ -445,11 +445,11 @@ def train():
     
     # Create callbacks
     checkpoint_callback = ModelCheckpoint(
-        filepath=os.path.join(Config.CHECKPOINT_DIR, 'model_epoch_{epoch:03d}'),
+        filepath=os.path.join(Config.CHECKPOINT_DIR, 'model_epoch_{epoch:03d}.weights.h5'),
         save_weights_only=True,
-        save_freq=train_steps * 5  # Save every 5 epochs
+        save_freq=train_steps * 5
     )
-    
+
     tensorboard_callback = TensorBoard(
         log_dir=Config.LOG_DIR,
         update_freq='epoch'
