@@ -18,18 +18,25 @@ class Config:
     # Data parameters
     DATA_DIR = "dataset/"
     METADATA_PATH = "floor_plan_metadata_v5_includingArea.csv"
-    IMAGE_WIDTH = 849
-    IMAGE_HEIGHT = 1570
     PLOT_SIZE = "10Marla"
-
+    
+    # Original dimensions for 10 Marla
+    ORIGINAL_WIDTH = 849
+    ORIGINAL_HEIGHT = 1570
+    ASPECT_RATIO = ORIGINAL_WIDTH / ORIGINAL_HEIGHT  # 0.541
+    
     # Model parameters
     LATENT_DIM = 128
     CONDITION_DIM = 32
     INITIAL_DIM = 64  # Initial filter size
 
-    # Initial smaller dimensions for stage 1 - using powers of 2 for clean division
-    GEN_INPUT_WIDTH = 128  # Must be divisible by 16 (2^4)
-    GEN_INPUT_HEIGHT = 128  # Must be divisible by 16 (2^4)
+    # Model dimensions (maintaining aspect ratio)
+    GEN_INPUT_HEIGHT = 128  # Base height
+    GEN_INPUT_WIDTH = int(GEN_INPUT_HEIGHT * ASPECT_RATIO)  # ~69
+    
+    # Output dimensions (maintaining aspect ratio)
+    OUTPUT_HEIGHT = GEN_INPUT_HEIGHT * 8  # 1024
+    OUTPUT_WIDTH = int(OUTPUT_HEIGHT * ASPECT_RATIO)  # ~554
 
     # Training parameters
     BATCH_SIZE = 4  # Reduced batch size for better stability
@@ -61,7 +68,7 @@ def load_metadata():
     return df
 
 def preprocess_image(image_path):
-    """Load and preprocess image for boundary detection."""
+    """Load and preprocess image for boundary detection with proper aspect ratio."""
     # Load image
     img = Image.open(image_path).convert('RGB')
     img = np.array(img)
@@ -75,9 +82,9 @@ def preprocess_image(image_path):
     # Combine: 1 channel for walls, 1 for room areas
     boundary_map = np.stack([walls, rooms], axis=-1)
 
-    # Resize to target dimensions (use exact dimensions that match our model architecture)
-    target_height = Config.GEN_INPUT_HEIGHT * 8  # Final output size
-    target_width = Config.GEN_INPUT_WIDTH * 8
+    # Resize to target dimensions that match our model architecture
+    target_height = Config.OUTPUT_HEIGHT
+    target_width = Config.OUTPUT_WIDTH
 
     boundary_map = cv2.resize(boundary_map,
                               (target_width, target_height),
@@ -88,20 +95,19 @@ def preprocess_image(image_path):
 
     return boundary_map
 
-
 def prepare_condition_vector(row):
-    """Extract conditional inputs from metadata."""
+    """Extract conditional inputs from metadata with NaN handling."""
     # Get room counts from the row
     room_counts = []
-
+    
     # Extract bathroom count (with NaN handling)
     bathroom_count = row['Count_Bathroom'] if pd.notna(row['Count_Bathroom']) else 0.0
     room_counts.append(bathroom_count / 4.0)  # Normalize by max count
-
+    
     # Extract bedroom count (with NaN handling)
     bedroom_count = row['Count_Bedroom'] if pd.notna(row['Count_Bedroom']) else 0.0
     room_counts.append(bedroom_count / 3.0)  # Normalize by max count
-
+    
     # Extract other important rooms (presence as 0 or 1)
     room_types = ['DrawingRoom', 'Kitchen', 'Dining', 'Lounge', 'Garage']
     for room in room_types:
@@ -110,19 +116,19 @@ def prepare_condition_vector(row):
             room_counts.append(min(row[count_col], 1.0))  # Binary presence
         else:
             room_counts.append(0.0)
-
+    
     # Total area (normalized) (with NaN handling)
     area = row['TotalAreaSqFt'] if pd.notna(row['TotalAreaSqFt']) else 0.0
     room_counts.append(area / 2275.0)  # Normalize by max area
-
+    
     # Convert to numpy array
     condition_vector = np.array(room_counts, dtype=np.float32)
-
+    
     # Pad to condition dimension if necessary
     if len(condition_vector) < Config.CONDITION_DIM:
         padding = np.zeros(Config.CONDITION_DIM - len(condition_vector), dtype=np.float32)
         condition_vector = np.concatenate([condition_vector, padding])
-
+    
     return condition_vector
 
 def data_generator(dataframe, batch_size):
@@ -174,11 +180,10 @@ def build_generator():
     target_height = Config.GEN_INPUT_HEIGHT
     target_width = Config.GEN_INPUT_WIDTH
 
-    # Make sure dimensions are powers of 2 for clean division
+    # First dense layer to create initial feature map with proper aspect ratio
     initial_height = target_height
     initial_width = target_width
 
-    # First dense layer to create initial feature map
     x = layers.Dense(initial_height * initial_width * Config.INITIAL_DIM)(combined_input)
     x = layers.BatchNormalization()(x)
     x = layers.LeakyReLU(0.2)(x)
@@ -242,7 +247,7 @@ def build_generator():
         # Add skip connection
         x = layers.Concatenate()([x, skip_connections[-(i + 1)]])
 
-    # Final upsampling to target size
+    # Final upsampling to target size with correct aspect ratio
     x = layers.Conv2DTranspose(64, 4, strides=2, padding='same')(x)
     x = layers.BatchNormalization()(x)
     x = layers.ReLU()(x)
@@ -254,11 +259,9 @@ def build_generator():
 
 def build_discriminator():
     """PatchGAN discriminator with conditional input."""
-    # Image input - match generator output size
-    # image_height = Config.GEN_INPUT_HEIGHT * 8
-    # image_width = Config.GEN_INPUT_WIDTH * 8
-    image_height = 256  # Match generator output
-    image_width = 256  # Match generator output
+    # Image input - match generator output size with proper aspect ratio
+    image_height = Config.OUTPUT_HEIGHT
+    image_width = Config.OUTPUT_WIDTH
 
     # Image input
     image_input = layers.Input(shape=(image_height, image_width, 2),
@@ -293,34 +296,33 @@ def wasserstein_loss(y_true, y_pred):
     """Wasserstein loss function."""
     return tf.reduce_mean(y_true * y_pred)
 
-
 def gradient_penalty(discriminator, real_images, fake_images, conditions):
     """Gradient penalty for WGAN-GP."""
     batch_size = tf.shape(real_images)[0]
-
+    
     # Ensure all inputs are tensors with consistent types
     real_images = tf.convert_to_tensor(real_images, dtype=tf.float32)
     fake_images = tf.convert_to_tensor(fake_images, dtype=tf.float32)
     conditions = tf.convert_to_tensor(conditions, dtype=tf.float32)
-
+    
     # Generate random interpolation factors
     alpha = tf.random.uniform(shape=[batch_size, 1, 1, 1], minval=0.0, maxval=1.0)
-
+    
     # Create interpolated images
     interpolated = alpha * real_images + (1 - alpha) * fake_images
-
+    
     with tf.GradientTape() as tape:
         tape.watch(interpolated)
         # Get discriminator output for interpolated images
         pred = discriminator([interpolated, conditions])
-
+    
     # Calculate gradients with respect to inputs
     gradients = tape.gradient(pred, interpolated)
     # Compute the Euclidean norm of the gradients
     gradients_norm = tf.sqrt(tf.reduce_sum(tf.square(gradients), axis=[1, 2, 3]))
     # Calculate the gradient penalty
     gradient_penalty = tf.reduce_mean(tf.square(gradients_norm - 1.0))
-
+    
     return gradient_penalty
 
 class FloorPlanGAN(models.Model):
@@ -333,62 +335,59 @@ class FloorPlanGAN(models.Model):
         super(FloorPlanGAN, self).compile()
         self.gen_optimizer = gen_optimizer
         self.disc_optimizer = disc_optimizer
-
+        
     def train_step(self, data):
         real_images, conditions = data
         batch_size = tf.shape(real_images)[0]
-
-        # Convert inputs to tensors
+        
+        # Convert both inputs to TensorFlow tensors
         real_images = tf.convert_to_tensor(real_images, dtype=tf.float32)
-        conditions = tf.convert_to_tensor(
-            np.nan_to_num(conditions, nan=0.0),
-            dtype=tf.float32
-        )
-
+        conditions = tf.convert_to_tensor(np.nan_to_num(conditions, nan=0.0), dtype=tf.float32)
+        
         # Train discriminator multiple times
         for i in range(Config.CRITIC_ITERATIONS):
             # Generate random noise
             noise = tf.random.normal([batch_size, Config.LATENT_DIM])
-
+            
             with tf.GradientTape() as tape:
                 # Generate fake images
                 fake_images = self.generator([noise, conditions], training=True)
-
+                
                 # Get discriminator outputs for real and fake images
                 real_output = self.discriminator([real_images, conditions], training=True)
                 fake_output = self.discriminator([fake_images, conditions], training=True)
-
+                
                 # Calculate Wasserstein loss
                 d_loss_real = -tf.reduce_mean(real_output)
                 d_loss_fake = tf.reduce_mean(fake_output)
-
+                
                 # Calculate gradient penalty
                 gp = gradient_penalty(self.discriminator, real_images, fake_images, conditions)
-
+                
                 # Total discriminator loss
                 d_loss = d_loss_real + d_loss_fake + Config.GP_WEIGHT * gp
-
+            
             # Get gradients and update discriminator
             d_gradients = tape.gradient(d_loss, self.discriminator.trainable_variables)
             self.disc_optimizer.apply_gradients(zip(d_gradients, self.discriminator.trainable_variables))
-
+        
         # Train generator
         noise = tf.random.normal([batch_size, Config.LATENT_DIM])
-
+        
         with tf.GradientTape() as tape:
             # Generate fake images
             fake_images = self.generator([noise, conditions], training=True)
-
+            
             # Get discriminator output for fake images
             fake_output = self.discriminator([fake_images, conditions], training=True)
-
+            
             # Calculate generator loss
             g_loss = -tf.reduce_mean(fake_output)
-
+        
         # Get gradients and update generator
         g_gradients = tape.gradient(g_loss, self.generator.trainable_variables)
         self.gen_optimizer.apply_gradients(zip(g_gradients, self.generator.trainable_variables))
-
+        
         return {
             "d_loss": d_loss,
             "d_loss_real": d_loss_real,
@@ -399,11 +398,11 @@ class FloorPlanGAN(models.Model):
 
 # Sample Generation Function
 def generate_samples(generator, condition_samples, epoch):
-    """Generate and save sample floor plans."""
+    """Generate and save sample floor plans with proper aspect ratio."""
     noise = tf.random.normal([len(condition_samples), Config.LATENT_DIM])
     generated_images = generator([noise, condition_samples], training=False)
     
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=(12, 12/Config.ASPECT_RATIO))
     
     for i in range(min(8, len(generated_images))):
         # Plot walls (channel 0)
@@ -421,6 +420,27 @@ def generate_samples(generator, condition_samples, epoch):
     plt.tight_layout()
     plt.savefig(os.path.join(Config.SAMPLE_DIR, f'samples_epoch_{epoch:03d}.png'))
     plt.close()
+
+# Visualize a single floor plan with proper aspect ratio
+def visualize_floor_plan(generated_image, title="Generated 10 Marla Floor Plan"):
+    """Visualize a floor plan with proper aspect ratio."""
+    plt.figure(figsize=(10, 10/Config.ASPECT_RATIO))  # Maintain aspect ratio in visualization
+    
+    # Walls channel
+    plt.subplot(1, 2, 1)
+    plt.imshow(generated_image[:, :, 0], cmap='gray')
+    plt.title("Walls")
+    plt.axis('off')
+    
+    # Room areas channel
+    plt.subplot(1, 2, 2)
+    plt.imshow(generated_image[:, :, 1], cmap='jet')
+    plt.title("Room Areas")
+    plt.axis('off')
+    
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.show()
 
 # Training Script
 def train():

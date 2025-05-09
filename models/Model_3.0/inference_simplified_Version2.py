@@ -2,7 +2,7 @@ import os
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from floor_plan_generator_stage1_simplified import Config, build_generator
+from floor_plan_generator_stage1_simplified_Version2 import Config, build_generator
 
 def generate_floor_plan(bedroom_count, bathroom_count, drawing_room=1, kitchen=1, lounge=1):
     """Generate a floor plan with specified requirements."""
