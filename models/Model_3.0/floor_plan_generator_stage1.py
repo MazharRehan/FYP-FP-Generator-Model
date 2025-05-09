@@ -218,13 +218,17 @@ def build_generator():
         print(f"Upsampling to shape: {skip_shapes[-(i + 1)]}")
 
         # Upsample to match skip connection dimensions
-        x = layers.Conv2DTranspose(
-            filters, 4, strides=2,
-            padding='same',
-            output_padding=(1, 1) if i == 0 else (0, 0)  # Adjust first upsample if needed
-        )(x)
-        x = layers.BatchNormalization()(x)
-        x = layers.ReLU()(x)
+        if i == 0:
+            x = layers.Conv2DTranspose(
+                filters, 4, strides=2,
+                padding='same',
+                output_padding=(1, 1)  # Only include if necessary
+            )(x)
+        else:
+            x = layers.Conv2DTranspose(
+                filters, 4, strides=2,
+                padding='same'  # No output_padding when it's (0, 0)
+            )(x)
 
         # Ensure exact shape match before concatenation
         if x.shape[1:3] != skip_connections[-(i + 1)].shape[1:3]:
@@ -236,7 +240,6 @@ def build_generator():
 
     # Final upsampling to target size
     x = layers.Conv2DTranspose(64, 4, strides=2, padding='same')(x)
-
     x = layers.BatchNormalization()(x)
     x = layers.ReLU()(x)
 
