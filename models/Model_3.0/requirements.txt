@@ -1,0 +1,36 @@
+# Core dependencies
+tensorflow>=2.6.0
+numpy>=1.19.5
+pandas>=1.3.0
+matplotlib>=3.4.0
+pillow>=8.2.0
+opencv-python>=4.5.0
+scikit-learn>=0.24.0
+
+# Development and utility packages
+jupyter>=1.0.0
+ipykernel>=6.0.0
+tqdm>=4.61.0
+
+# Visualization enhancements
+seaborn>=0.11.0
+
+# Optional but recommended for performance
+tensorflow-addons>=0.13.0
+
+
+/*
+# Core dependencies
+conda install -c conda-forge tensorflow=2.6.0
+conda install -c conda-forge numpy=1.19.5 pandas=1.3.0 matplotlib=3.4.0 pillow=8.2.0 scikit-learn=0.24.0
+conda install -c conda-forge opencv=4.5.0
+
+# Development packages
+conda install -c conda-forge jupyter ipykernel tqdm
+
+# Visualization
+conda install -c conda-forge seaborn
+
+# Optional TF addons
+pip install tensorflow-addons==0.13.0
+*/

@@ -1,0 +1,18 @@
+conda create -n floorplan-env-30 python=3.8
+conda init
+conda activate floorplan-env-30
+
+
+Training:
+python floor_plan_generator_stage1.py
+----> logs/stage1/
+checkpoints/stage1/
+samples/stage1/
+
+Evaluation:
+evaluate_model.py
+---> evaluation/stage1/
+
+Inference:
+python inference.py
+---> generated/
