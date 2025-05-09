@@ -239,7 +239,10 @@ class FloorPlanGAN(models.Model):
     def train_step(self, data):
         real_images, conditions = data
         batch_size = tf.shape(real_images)[0]
-        
+
+        # Add noise to real images for regularization
+        real_images_with_noise = real_images + tf.random.normal(tf.shape(real_images), mean=0.0, stddev=0.05)
+
         # Generate random noise
         noise = tf.random.normal([batch_size, Config.LATENT_DIM])
         
