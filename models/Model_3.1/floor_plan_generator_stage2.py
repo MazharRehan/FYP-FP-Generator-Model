@@ -242,92 +242,98 @@ def data_generator(dataframe, batch_size):
 
 # Enhanced Model Architecture for Stage 2
 def build_generator():
-    """Enhanced U-Net based generator for room type segmentation."""
     # Latent vector input
     noise_input = layers.Input(shape=(Config.LATENT_DIM,), name='noise_input')
-    
     # Conditional input (room counts, areas, etc.)
     condition_input = layers.Input(shape=(Config.CONDITION_DIM,), name='condition_input')
-    
+
     # Process condition with a small network
-    c = layers.Dense(128)(condition_input)
-    c = layers.LeakyReLU(0.2)(c)
-    c = layers.Dense(128)(c)
-    c = layers.LeakyReLU(0.2)(c)
-    
+    c_processed = layers.Dense(128)(condition_input)
+    c_processed = layers.LeakyReLU(0.2)(c_processed)
+    c_processed = layers.Dense(128)(c_processed)
+    c_processed = layers.LeakyReLU(0.2)(c_processed)  # Shape: (None, 128)
+
     # Combine noise and processed condition
-    z = layers.Concatenate()([noise_input, c])
-    
-    # Initial dense layer
-    x = layers.Dense(8 * 8 * 512)(z)
+    z = layers.Concatenate()([noise_input, c_processed])  # Shape: (None, LATENT_DIM + 128)
+
+    # Initial dense layer, project to a starting spatial resolution
+    # Start at 8x8
+    x = layers.Dense(8 * 8 * 512)(z)  # 8*8*512 = 32768
     x = layers.LeakyReLU(0.2)(x)
-    x = layers.Reshape((8, 8, 512))(x)
-    
-    # Feature maps for skip connections
-    skip_features = []
-    
-    # Encoder blocks
-    # 8x8 -> 16x16
-    x = layers.Conv2D(512, 3, padding='same')(x)
-    x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    skip_features.append(x)
-    
-    # 16x16 -> 32x32
-    x = layers.UpSampling2D()(x)
+    x = layers.Reshape((8, 8, 512))(x)  # Shape: (None, 8, 8, 512)
+
+    # Upsampling block 1: 8x8 -> 16x16
+    x = layers.UpSampling2D()(x)  # (None, 16, 16, 512)
     x = layers.Conv2D(256, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    skip_features.append(x)
-    
-    # 32x32 -> 64x64
-    x = layers.UpSampling2D()(x)
+    x = layers.LeakyReLU(0.2)(x)  # (None, 16, 16, 256)
+
+    # Upsampling block 2: 16x16 -> 32x32
+    x = layers.UpSampling2D()(x)  # (None, 32, 32, 256)
     x = layers.Conv2D(128, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    skip_features.append(x)
-    
-    # 64x64 -> 128x128
-    x = layers.UpSampling2D()(x)
+    x = layers.LeakyReLU(0.2)(x)  # (None, 32, 32, 128)
+
+    # Upsampling block 3: 32x32 -> 64x64
+    x = layers.UpSampling2D()(x)  # (None, 64, 64, 128)
     x = layers.Conv2D(64, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    skip_features.append(x)
-    
-    # Inject condition at bottleneck of U-Net
-    bottleneck_condition = layers.Dense(16 * 16)(c)
-    bottleneck_condition = layers.Reshape((16, 16, 1))(bottleneck_condition)
-    bottleneck_condition = layers.UpSampling2D(size=(8, 8))(bottleneck_condition)
-    
-    # Concatenate with features
-    x = layers.Concatenate()([x, bottleneck_condition])
-    
-    # 128x128 -> 256x256
-    x = layers.UpSampling2D()(x)
-    x = layers.Conv2D(32, 3, padding='same')(x)
+    x = layers.LeakyReLU(0.2)(x)  # (None, 64, 64, 64)
+
+    # --- Inject Condition Here or at 128x128 ---
+    # Let's try injecting condition early, e.g., after the 8x8 or 16x16 stage,
+    # or make the 'bottleneck_condition' match the spatial dimension of 'x' before concatenation.
+    # The original error was at a later stage. Let's stick to fixing that specific concatenation.
+
+    # Upsampling block 4: 64x64 -> 128x128
+    x = layers.UpSampling2D()(x)  # (None, 128, 128, 64)
+    x = layers.Conv2D(64, 3, padding='same')(x)  # Keep 64 channels or adjust
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    
-    # Add skip connection from encoder (improves detail)
-    if len(skip_features) > 0:
-        skip_connection = skip_features[-1]
-        skip_connection = layers.UpSampling2D(size=(2, 2))(skip_connection)
-        x = layers.Concatenate()([x, skip_connection])
-    
-    # Final layers to refine output
+    x_128 = layers.LeakyReLU(0.2)(x)  # x_128 is (None, 128, 128, 64)
+
+    # Prepare condition to be spatially injected at 128x128
+    # 'c_processed' is (None, 128)
+    condition_spatial = layers.Dense(128 * 128 * 1)(
+        c_processed)  # Dense layer to match spatial dimensions if needed, or reshape directly
+    condition_spatial = layers.LeakyReLU(0.2)(condition_spatial)
+    # The original bottleneck_condition:
+    # bottleneck_condition = layers.Dense(16 * 16)(c) # c was (None, 128)
+    # bottleneck_condition = layers.Reshape((16, 16, 1))(bottleneck_condition)
+    # bottleneck_condition = layers.UpSampling2D(size=(8, 8))(bottleneck_condition) # -> (128, 128, 1)
+
+    # Let's use the original logic for bottleneck_condition but ensure 'x' is also 128x128
+    # 'c_processed' (derived from 'c') is (None, 128)
+    bottleneck_cond_features = layers.Dense(16 * 16 * 4)(c_processed)  # Project to 16x16x4 = 1024 features
+    bottleneck_cond_features = layers.LeakyReLU(0.2)(bottleneck_cond_features)
+    bottleneck_cond_reshaped = layers.Reshape((16, 16, 4))(bottleneck_cond_features)  # (None, 16, 16, 4)
+    condition_to_concat = layers.UpSampling2D(size=(8, 8))(bottleneck_cond_reshaped)  # (None, 128, 128, 4)
+
+    # Concatenate x_128 with condition_to_concat
+    x = layers.Concatenate()([x_128, condition_to_concat])  # x_128(128,128,64), condition(128,128,4) -> (128,128,68)
+
+    # Upsampling block 5: 128x128 -> 256x256
+    x = layers.UpSampling2D()(x)  # (None, 256, 256, 68)
+    x = layers.Conv2D(32, 3, padding='same')(x)  # Reduce channels
+    x = layers.BatchNormalization()(x)
+    x = layers.LeakyReLU(0.2)(x)  # (None, 256, 256, 32)
+
+    # Removed the problematic skip connection for now.
+    # If you want to add a skip connection, ensure dimensions match.
+    # For example, if you had an encoder stage at 256x256xN, you could concatenate it here.
+
+    # Final refinement layers
     x = layers.Conv2D(64, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    
+    x = layers.LeakyReLU(0.2)(x)  # (None, 256, 256, 64)
+
     x = layers.Conv2D(32, 3, padding='same')(x)
     x = layers.BatchNormalization()(x)
-    x = layers.LeakyReLU(0.2)(x)
-    
-    # Output layer with one channel per room type
-    x = layers.Conv2D(Config.NUM_ROOM_TYPES, 1, padding='same')(x)
-    # Softmax activation to ensure each pixel is assigned to one room type
-    output = layers.Activation('softmax', name='room_type_output')(x)
-    
+    x = layers.LeakyReLU(0.2)(x)  # (None, 256, 256, 32)
+
+    # Output layer
+    output_logits = layers.Conv2D(Config.NUM_ROOM_TYPES, 1, padding='same')(x)  # (None, 256, 256, NUM_ROOM_TYPES)
+    output = layers.Activation('softmax', name='room_type_output')(output_logits)
+
     return models.Model([noise_input, condition_input], output, name='generator')
 
 def build_discriminator():
@@ -377,20 +383,47 @@ def build_discriminator():
 def room_count_consistency_loss(y_true, y_pred, target_counts):
     """Ensure the number of rooms matches target counts."""
     loss = 0.0
-    
-    # Skip background (0) and walls (1)
-    for room_idx in range(2, Config.NUM_ROOM_TYPES):
-        # Get target count for this room type
-        target = target_counts[:, room_idx-2]  # Adjust index for target_counts
-        
-        # Calculate predicted count (sum of probabilities)
-        pred_count = tf.reduce_sum(y_pred[:, :, :, room_idx], axis=[1, 2]) / (Config.TARGET_SIZE * Config.TARGET_SIZE / 100)
-        
-        # Calculate mean squared error between predicted and target counts
+
+    # These are the room types for which 'target_counts' provides data
+    # Their indices in Config.ROOM_TYPES (after skipping Background and Wall) will be 0-9
+    # if they are the first 10 after Background and Wall.
+    # Let's be explicit based on Config.ROOM_TYPES
+
+    # Room types for which we have counts in target_counts
+    # This list MUST match the order and content of room_types in prepare_condition_vector
+    # that contribute to conditions[:, 1:11]
+    counted_room_type_names = ['Bathroom', 'Bedroom', 'Dining', 'DrawingRoom', 'DressingArea',
+                               'Kitchen', 'Lounge', 'Store', 'Garage', 'Backyard']
+
+    if target_counts.shape[1] != len(counted_room_type_names):
+        raise ValueError(f"target_counts has {target_counts.shape[1]} columns, "
+                         f"but expected {len(counted_room_type_names)} for counted_room_type_names.")
+
+    for i, room_name_in_target_counts in enumerate(counted_room_type_names):
+        try:
+            # Find the actual index of this room_name in Config.ROOM_TYPES
+            # This is the channel index in y_pred
+            pred_channel_idx = Config.ROOM_TYPES.index(room_name_in_target_counts)
+        except ValueError:
+            # This room name (from counted_room_type_names) is not in Config.ROOM_TYPES
+            # This would be a configuration error.
+            print(
+                f"Warning: Room '{room_name_in_target_counts}' for count loss not found in Config.ROOM_TYPES. Skipping.")
+            continue
+
+        # Get target count for this room type from the i-th column of target_counts
+        target = target_counts[:, i]
+
+        # Calculate predicted count (sum of probabilities for the specific pred_channel_idx)
+        # The division factor here might need review for its logic (as discussed before)
+        pred_count = tf.reduce_sum(y_pred[:, :, :, pred_channel_idx], axis=[1, 2]) / (
+                    Config.TARGET_SIZE * Config.TARGET_SIZE / 100.0)  # Added .0 for float division
+
+        # Calculate mean squared error
         room_loss = tf.reduce_mean(tf.square(pred_count - target))
         loss += room_loss
-    
-    return loss
+
+    return loss / float(len(counted_room_type_names) + 1e-8)  # Average loss over counted types
 
 def structural_coherence_loss(y_pred):
     """Encourage structural coherence in the floor plan."""
@@ -599,7 +632,7 @@ def train():
     """Train the Stage 2 floor plan generator."""
     # Enable eager execution for better error messages
     print("Configuring TensorFlow...")
-    tf.config.run_functions_eagerly(True)
+    # tf.config.run_functions_eagerly(True) # Comment this out for performance
     
     print("Loading metadata...")
     df = load_metadata()
@@ -618,48 +651,89 @@ def train():
     val_steps = max(1, len(val_df) // Config.BATCH_SIZE)
     
     print("Building models...")
-    
+
+    # ... (previous code in train()) ...
+
     # Check if we can load Stage 1 weights
-    stage1_weights_path = os.path.join("checkpoints/stage1/", "final_generator")
-    has_stage1_weights = os.path.exists(stage1_weights_path)
-    
-    # Build models
-    generator = build_generator()
-    discriminator = build_discriminator()
-    
-    # Print model summaries
+    stage1_model_dir_path = os.path.join("checkpoints/stage1/", "final_generator")  # Path to the SavedModel DIRECTORY
+
+    # More robust check for a valid SavedModel directory
+    is_stage1_saved_model_valid = os.path.isdir(stage1_model_dir_path) and \
+                                  os.path.exists(os.path.join(stage1_model_dir_path, "saved_model.pb"))
+
+    # Build Stage 2 models (these are the models we will actually train)
+    generator = build_generator()  # Stage 2 generator from floor_plan_generator_stage2.py
+    discriminator = build_discriminator()  # Stage 2 discriminator
+
+    print("Stage 2 Generator Summary:")
     generator.summary()
+    print("\nStage 2 Discriminator Summary:")
     discriminator.summary()
-    
+
     # Try to transfer Stage 1 weights if available
-    if has_stage1_weights:
-        print("Found Stage 1 weights. Attempting to transfer learning...")
+    if is_stage1_saved_model_valid:
+        print(f"\nFound Stage 1 SavedModel at: {stage1_model_dir_path}. Attempting to load and transfer learning...")
         try:
-            # Load Stage 1 generator for weight transfer
-            from floor_plan_generator_stage1_simplified_Version2 import build_generator as build_generator_stage1
-            
-            # Build Stage 1 generator
-            generator_stage1 = build_generator_stage1()
-            generator_stage1.load_weights(stage1_weights_path)
-            
-            # Transfer compatible weights
-            print("Transferring weights from Stage 1 to Stage 2 generator...")
-            for layer_s1, layer_s2 in zip(generator_stage1.layers, generator.layers):
-                if layer_s1.name == layer_s2.name and layer_s1.get_weights():
-                    try:
-                        # Check if shapes are compatible
-                        if all(w1.shape == w2.shape for w1, w2 in 
-                              zip(layer_s1.get_weights(), layer_s2.get_weights())):
-                            layer_s2.set_weights(layer_s1.get_weights())
-                            print(f"Transferred weights for layer: {layer_s1.name}")
-                    except:
-                        print(f"Couldn't transfer weights for layer: {layer_s1.name}")
-            
-            print("Weight transfer complete!")
-        except Exception as e:
-            print(f"Error transferring weights: {e}")
-    
-    # Create GAN model
+            # ---- CORRECT WAY TO LOAD STAGE 1 SAVEDMODEL ----
+            print(f"Loading Stage 1 generator model from: {stage1_model_dir_path}")
+            # This loads the complete Stage 1 generator model (architecture + weights)
+            generator_stage1_loaded = tf.keras.models.load_model(stage1_model_dir_path)
+            print("Stage 1 generator model loaded successfully.")
+            # generator_stage1_loaded.summary() # Optional: print summary of loaded Stage 1 model for comparison
+            # -------------------------------------------------
+
+            # Now, transfer compatible weights from generator_stage1_loaded to the new Stage 2 'generator'
+            print("Transferring weights from loaded Stage 1 generator to Stage 2 generator...")
+            num_transferred_layers = 0
+            num_skipped_shape_mismatch = 0
+            num_skipped_no_s1_layer = 0
+
+            for layer_s2 in generator.layers:  # Iterate over layers of the Stage 2 generator
+                try:
+                    # Try to get the corresponding layer by name from the loaded Stage 1 generator
+                    layer_s1 = generator_stage1_loaded.get_layer(name=layer_s2.name)
+
+                    s1_weights = layer_s1.get_weights()
+                    s2_weights = layer_s2.get_weights()
+
+                    if s1_weights and s2_weights:  # Check if both layers have weights
+                        # Check if all weight tensors within the layer have matching shapes
+                        if all(w1.shape == w2.shape for w1, w2 in zip(s1_weights, s2_weights)):
+                            layer_s2.set_weights(s1_weights)
+                            num_transferred_layers += 1
+                        else:
+                            print(f"  - Skipping layer '{layer_s2.name}': Incompatible weight shapes.")
+                            # For detailed debugging of shape mismatches:
+                            # for i, (w1, w2) in enumerate(zip(s1_weights, s2_weights)):
+                            #     if w1.shape != w2.shape:
+                            #         print(f"    - Weight {i}: Stage 1 shape {w1.shape}, Stage 2 shape {w2.shape}")
+                            num_skipped_shape_mismatch += 1
+                        # else:
+                        # print(f"  - Layer '{layer_s2.name}' or its Stage 1 counterpart has no weights.")
+                        pass
+
+                except ValueError:
+                    # This means a layer with layer_s2.name was not found in generator_stage1_loaded
+                    # print(f"  - Layer '{layer_s2.name}' not found in Stage 1 model. Skipping.")
+                    num_skipped_no_s1_layer += 1
+                except Exception as e_transfer:
+                    print(f"  - Error transferring weights for layer '{layer_s2.name}': {e_transfer}")
+
+            print(f"Weight transfer attempt complete.")
+            print(f"  Successfully transferred weights for {num_transferred_layers} layers.")
+            if num_skipped_shape_mismatch > 0:
+                print(f"  Skipped {num_skipped_shape_mismatch} layers due to shape mismatches.")
+            if num_skipped_no_s1_layer > 0:
+                print(f"  Skipped {num_skipped_no_s1_layer} layers not found in Stage 1 model by name.")
+
+        except Exception as e_load:
+            print(f"ERROR: Could not load Stage 1 model or transfer weights: {e_load}")
+            print("Proceeding with randomly initialized weights for Stage 2 generator.")
+    else:
+        print(f"\nStage 1 SavedModel not found or invalid at '{stage1_model_dir_path}'.")
+        print("Training Stage 2 generator from scratch.")
+
+    # Create GAN model (using the Stage 2 generator, which may now have some transferred weights)
     gan = FloorPlanGANStage2(generator, discriminator)
     
     # Compile with optimizers

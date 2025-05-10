@@ -7,15 +7,39 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 def load_trained_generator():
-    """Load the trained generator model."""
-    generator = build_generator()
+    """Load the trained generator model from SavedModel format."""
+    model_path = os.path.join(Config.CHECKPOINT_DIR, 'final_generator')  # Path to SavedModel directory
     try:
-        generator.load_weights(os.path.join(Config.CHECKPOINT_DIR, 'final_generator'))
+        # --- CORRECT WAY TO LOAD SAVEDMODEL ---
+        print(f"Loading trained generator from SavedModel: {model_path}")
+        generator = tf.keras.models.load_model(model_path)
+        # --------------------------------------
         print("Loaded trained generator model successfully!")
         return generator
     except Exception as e:
-        print(f"Error loading generator: {e}")
-        return None
+        print(f"Error loading generator from SavedModel: {e}")
+        # You might want to see if any .h5 checkpoints exist as a fallback,
+        # e.g., generator_epoch_100.h5, if SavedModel loading fails.
+        # For now, let's keep it simple.
+
+        # Fallback attempt (optional): Try loading .h5 weights if SavedModel fails
+        # This part assumes your Stage 1 training also saved .h5 files.
+        # And that `build_generator()` from floor_plan_generator_stage1_simplified_Version2.py
+        # correctly defines the architecture for these .h5 weights.
+        print(f"Attempting fallback to load weights from .h5 file...")
+        generator_h5_fallback = build_generator()  # From floor_plan_generator_stage1_simplified_Version2
+        h5_weights_path = os.path.join(Config.CHECKPOINT_DIR, 'generator_epoch_100.h5')  # Assuming epoch 100 is final
+        if os.path.exists(h5_weights_path):
+            try:
+                generator_h5_fallback.load_weights(h5_weights_path)
+                print(f"Successfully loaded weights from .h5 file: {h5_weights_path}")
+                return generator_h5_fallback
+            except Exception as e_h5:
+                print(f"Error loading weights from .h5 file '{h5_weights_path}': {e_h5}")
+        else:
+            print(f".h5 weights file not found at {h5_weights_path}")
+
+        return None  # Return None if all loading attempts fail
 
 def compare_real_vs_generated(metadata_path=Config.METADATA_PATH, data_dir=Config.DATA_DIR, num_samples=5):
     """Compare real floor plans with generated ones."""
