@@ -1,0 +1,133 @@
+{
+  "file_name": "10Marla_GF_FP_015_V02.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "015",
+  "version": "V02",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 4,
+    "Kitchen": 2,
+    "DrawingRoom": 1,
+    "Garage": 2,
+    "Lounge": 1,
+    "Stairs": 24,
+    "Store": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 3
+  },
+  "room_areas_pixels": {
+    "Bedroom": 183354,
+    "Bathroom": 91101,
+    "Kitchen": 77906,
+    "DrawingRoom": 106560,
+    "Garage": 141368,
+    "Lounge": 199456,
+    "Stairs": 23997,
+    "Store": 23923,
+    "Lobby": 59789,
+    "Lawn": 70825,
+    "Passage": 132955
+  },
+  "total_area_pixels": 1111234,
+  "room_areas_sqft": {
+    "Bedroom": 312.94,
+    "Bathroom": 155.49,
+    "Kitchen": 132.97,
+    "DrawingRoom": 181.87,
+    "Garage": 241.28,
+    "Lounge": 340.42,
+    "Stairs": 40.96,
+    "Store": 40.83,
+    "Lobby": 102.05,
+    "Lawn": 120.88,
+    "Passage": 226.92
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      164.17,
+      148.78
+    ],
+    "Bathroom": [
+      59.13,
+      36.08,
+      35.47,
+      24.81
+    ],
+    "Kitchen": [
+      132.57,
+      0.4
+    ],
+    "DrawingRoom": [
+      181.87
+    ],
+    "Garage": [
+      241.11,
+      0.17
+    ],
+    "Lounge": [
+      340.42
+    ],
+    "Stairs": [
+      4.36,
+      3.84,
+      2.51,
+      2.21,
+      2.21,
+      2.18,
+      2.18,
+      1.92,
+      1.88,
+      1.81,
+      1.65,
+      1.47,
+      1.19,
+      1.16,
+      1.13,
+      1.1,
+      1.04,
+      1.04,
+      1.04,
+      1.01,
+      1.01,
+      1.01,
+      0.99,
+      0.96
+    ],
+    "Store": [
+      40.83
+    ],
+    "PrayerRoom": [],
+    "Lobby": [
+      102.05
+    ],
+    "Lawn": [
+      120.88
+    ],
+    "Passage": [
+      225.27,
+      1.14,
+      0.51
+    ]
+  },
+  "analysis_date": "2025-05-12 00:38:31"
+}

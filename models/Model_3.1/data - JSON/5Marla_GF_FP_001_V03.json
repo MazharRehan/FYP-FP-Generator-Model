@@ -1,0 +1,146 @@
+{
+  "file_name": "5Marla_GF_FP_001_V03.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "001",
+  "version": "V03",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Stairs": 17,
+    "OpenSpace": 2,
+    "Lobby": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 129647,
+    "Bathroom": 38702,
+    "Kitchen": 23392,
+    "DrawingRoom": 56648,
+    "Garage": 61857,
+    "Stairs": 17782,
+    "OpenSpace": 23638,
+    "Lobby": 66936
+  },
+  "overall_total_counted_pixels": 418602,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      67302,
+      62345
+    ],
+    "Bathroom": [
+      13330,
+      12723,
+      12649
+    ],
+    "Kitchen": [
+      23392
+    ],
+    "DrawingRoom": [
+      56648
+    ],
+    "Garage": [
+      61857
+    ],
+    "Stairs": [
+      4983,
+      1216,
+      1216,
+      1216,
+      1216,
+      1216,
+      1134,
+      629,
+      629,
+      555,
+      555,
+      544,
+      543,
+      539,
+      537,
+      527,
+      527
+    ],
+    "OpenSpace": [
+      14442,
+      9196
+    ],
+    "Lobby": [
+      66936
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 307.3,
+    "Bathroom": 91.74,
+    "Kitchen": 55.45,
+    "DrawingRoom": 134.27,
+    "Garage": 146.62,
+    "Stairs": 42.15,
+    "OpenSpace": 56.03,
+    "Lobby": 158.66
+  },
+  "overall_total_counted_sqft": 992.21,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      159.53,
+      147.78
+    ],
+    "Bathroom": [
+      31.6,
+      30.16,
+      29.98
+    ],
+    "Kitchen": [
+      55.45
+    ],
+    "DrawingRoom": [
+      134.27
+    ],
+    "Garage": [
+      146.62
+    ],
+    "Stairs": [
+      11.81,
+      2.88,
+      2.88,
+      2.88,
+      2.88,
+      2.88,
+      2.69,
+      1.49,
+      1.49,
+      1.32,
+      1.32,
+      1.29,
+      1.29,
+      1.28,
+      1.27,
+      1.25,
+      1.25
+    ],
+    "OpenSpace": [
+      34.23,
+      21.8
+    ],
+    "Lobby": [
+      158.66
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-05-12 02:25:18"
+}

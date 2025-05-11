@@ -1,0 +1,139 @@
+{
+  "file_name": "20Marla_GF_FP_001_V02.png",
+  "plot_type": "20Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "001",
+  "version": "V02",
+  "dimensions": {
+    "feet": [
+      50,
+      90
+    ],
+    "inches": [
+      12.583,
+      22.594
+    ],
+    "pixels": [
+      1209,
+      2170
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.557,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 19,
+    "Staircase": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Dining": 1,
+    "Passage": 1,
+    "DressingArea": 1,
+    "SideGarden": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 355659,
+    "Bathroom": 90234,
+    "Kitchen": 120600,
+    "DrawingRoom": 222172,
+    "Garage": 392250,
+    "Lounge": 293380,
+    "Stairs": 51704,
+    "Staircase": 122290,
+    "Lobby": 106601,
+    "Lawn": 200931,
+    "Dining": 99776,
+    "Passage": 258364,
+    "DressingArea": 36685,
+    "SideGarden": 103615
+  },
+  "total_area_pixels": 2454261,
+  "room_areas_sqft": {
+    "Bedroom": 610.04,
+    "Bathroom": 154.77,
+    "Kitchen": 206.86,
+    "DrawingRoom": 381.08,
+    "Garage": 672.81,
+    "Lounge": 503.22,
+    "Stairs": 88.69,
+    "Staircase": 209.76,
+    "Lobby": 182.85,
+    "Lawn": 344.65,
+    "Dining": 171.14,
+    "Passage": 443.16,
+    "DressingArea": 62.92,
+    "SideGarden": 177.73
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      315.31,
+      294.73
+    ],
+    "Bathroom": [
+      85.83,
+      68.95
+    ],
+    "Kitchen": [
+      206.86
+    ],
+    "DrawingRoom": [
+      381.08
+    ],
+    "Garage": [
+      672.81
+    ],
+    "Lounge": [
+      503.22
+    ],
+    "Stairs": [
+      16.05,
+      8.26,
+      5.64,
+      4.87,
+      4.63,
+      4.63,
+      4.63,
+      4.63,
+      4.63,
+      4.63,
+      4.63,
+      4.61,
+      3.14,
+      3.0,
+      3.0,
+      2.31,
+      2.28,
+      1.58,
+      1.54
+    ],
+    "Staircase": [
+      209.76
+    ],
+    "Lobby": [
+      182.85
+    ],
+    "Lawn": [
+      344.65
+    ],
+    "Dining": [
+      171.14
+    ],
+    "Passage": [
+      443.16
+    ],
+    "DressingArea": [
+      62.92
+    ],
+    "SideGarden": [
+      177.73
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:52"
+}

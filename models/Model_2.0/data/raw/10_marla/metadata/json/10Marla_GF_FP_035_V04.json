@@ -1,0 +1,129 @@
+{
+  "file_name": "10Marla_GF_FP_035_V04.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "035",
+  "version": "V04",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 2,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 24,
+    "PrayerRoom": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 3
+  },
+  "room_areas_pixels": {
+    "Bedroom": 192559,
+    "Bathroom": 31500,
+    "Kitchen": 96973,
+    "DrawingRoom": 114329,
+    "Garage": 209053,
+    "Lounge": 227128,
+    "Stairs": 19437,
+    "PrayerRoom": 29156,
+    "Lobby": 57177,
+    "Lawn": 105903,
+    "Passage": 101844
+  },
+  "total_area_pixels": 1185059,
+  "room_areas_sqft": {
+    "Bedroom": 328.65,
+    "Bathroom": 53.76,
+    "Kitchen": 165.51,
+    "DrawingRoom": 195.13,
+    "Garage": 356.8,
+    "Lounge": 387.65,
+    "Stairs": 33.17,
+    "PrayerRoom": 49.76,
+    "Lobby": 97.59,
+    "Lawn": 180.75,
+    "Passage": 173.82
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      166.03,
+      162.63
+    ],
+    "Bathroom": [
+      27.3,
+      26.47
+    ],
+    "Kitchen": [
+      165.33,
+      0.18
+    ],
+    "DrawingRoom": [
+      195.13
+    ],
+    "Garage": [
+      356.8
+    ],
+    "Lounge": [
+      387.65
+    ],
+    "Stairs": [
+      4.72,
+      3.33,
+      2.2,
+      2.2,
+      1.77,
+      1.77,
+      1.73,
+      1.59,
+      1.54,
+      1.04,
+      1.04,
+      1.01,
+      1.01,
+      0.98,
+      0.91,
+      0.86,
+      0.86,
+      0.81,
+      0.81,
+      0.75,
+      0.71,
+      0.7,
+      0.66,
+      0.19
+    ],
+    "PrayerRoom": [
+      49.76
+    ],
+    "Lobby": [
+      97.59
+    ],
+    "Lawn": [
+      180.75
+    ],
+    "Passage": [
+      100.16,
+      72.16,
+      1.51
+    ]
+  },
+  "analysis_date": "2025-05-12 00:38:40"
+}

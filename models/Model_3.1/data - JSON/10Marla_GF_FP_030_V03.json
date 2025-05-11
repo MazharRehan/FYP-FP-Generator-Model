@@ -1,0 +1,269 @@
+{
+  "file_name": "10Marla_GF_FP_030_V03.png",
+  "parsed_plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "030",
+  "version": "V03",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 2275,
+  "calculated_area_per_pixel_sqft": 0.00479327,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 30,
+    "OpenSpace": 2,
+    "Lobby": 1,
+    "Dining": 1,
+    "ServantQuarter": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 98942,
+    "Bathroom": 13013,
+    "Kitchen": 23101,
+    "DrawingRoom": 32491,
+    "Garage": 76932,
+    "Lounge": 80736,
+    "Stairs": 9785,
+    "OpenSpace": 3242,
+    "Lobby": 15256,
+    "Dining": 25158,
+    "ServantQuarter": 14280
+  },
+  "overall_total_counted_pixels": 392936,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      49787,
+      49155
+    ],
+    "Bathroom": [
+      6645,
+      6368
+    ],
+    "Kitchen": [
+      23101
+    ],
+    "DrawingRoom": [
+      32491
+    ],
+    "Garage": [
+      76932
+    ],
+    "Lounge": [
+      80736
+    ],
+    "Stairs": [
+      721,
+      410,
+      400,
+      400,
+      400,
+      400,
+      374,
+      373,
+      370,
+      370,
+      369,
+      360,
+      360,
+      360,
+      360,
+      360,
+      360,
+      360,
+      360,
+      346,
+      344,
+      239,
+      189,
+      180,
+      180,
+      180,
+      173,
+      163,
+      162,
+      162
+    ],
+    "OpenSpace": [
+      95,
+      91,
+      91,
+      90,
+      90,
+      90,
+      89,
+      89,
+      89,
+      88,
+      87,
+      86,
+      86,
+      86,
+      86,
+      86,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      82,
+      82,
+      82,
+      81,
+      81,
+      81,
+      81,
+      80,
+      80
+    ],
+    "Lobby": [
+      15256
+    ],
+    "Dining": [
+      25158
+    ],
+    "ServantQuarter": [
+      14280
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 474.26,
+    "Bathroom": 62.37,
+    "Kitchen": 110.73,
+    "DrawingRoom": 155.74,
+    "Garage": 368.76,
+    "Lounge": 386.99,
+    "Stairs": 46.9,
+    "OpenSpace": 15.54,
+    "Lobby": 73.13,
+    "Dining": 120.59,
+    "ServantQuarter": 68.45
+  },
+  "overall_total_counted_sqft": 1883.45,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      238.64,
+      235.61
+    ],
+    "Bathroom": [
+      31.85,
+      30.52
+    ],
+    "Kitchen": [
+      110.73
+    ],
+    "DrawingRoom": [
+      155.74
+    ],
+    "Garage": [
+      368.76
+    ],
+    "Lounge": [
+      386.99
+    ],
+    "Stairs": [
+      3.46,
+      1.97,
+      1.92,
+      1.92,
+      1.92,
+      1.92,
+      1.79,
+      1.79,
+      1.77,
+      1.77,
+      1.77,
+      1.73,
+      1.73,
+      1.73,
+      1.73,
+      1.73,
+      1.73,
+      1.73,
+      1.73,
+      1.66,
+      1.65,
+      1.15,
+      0.91,
+      0.86,
+      0.86,
+      0.86,
+      0.83,
+      0.78,
+      0.78,
+      0.78
+    ],
+    "OpenSpace": [
+      0.46,
+      0.44,
+      0.44,
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      0.42,
+      0.42,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.41,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.4,
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.38,
+      0.38
+    ],
+    "Lobby": [
+      73.13
+    ],
+    "Dining": [
+      120.59
+    ],
+    "ServantQuarter": [
+      68.45
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      35,
+      65
+    ],
+    "physical_area_sqft": 2275
+  },
+  "analysis_date": "2025-05-12 02:25:12"
+}

@@ -1,0 +1,127 @@
+{
+  "file_name": "5Marla_GF_FP_003_V02.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "003",
+  "version": "V02",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 3,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Stairs": 13,
+    "Lobby": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 173437,
+    "Bathroom": 24915,
+    "Kitchen": 31324,
+    "DrawingRoom": 55842,
+    "Garage": 96569,
+    "Stairs": 11743,
+    "Lobby": 29196
+  },
+  "overall_total_counted_pixels": 423026,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      58741,
+      58056,
+      56640
+    ],
+    "Bathroom": [
+      12986,
+      11929
+    ],
+    "Kitchen": [
+      31324
+    ],
+    "DrawingRoom": [
+      55842
+    ],
+    "Garage": [
+      96569
+    ],
+    "Stairs": [
+      1245,
+      1245,
+      1162,
+      1162,
+      1162,
+      1162,
+      1162,
+      594,
+      584,
+      574,
+      572,
+      560,
+      559
+    ],
+    "Lobby": [
+      29196
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 411.1,
+    "Bathroom": 59.06,
+    "Kitchen": 74.25,
+    "DrawingRoom": 132.36,
+    "Garage": 228.9,
+    "Stairs": 27.83,
+    "Lobby": 69.2
+  },
+  "overall_total_counted_sqft": 1002.7,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      139.23,
+      137.61,
+      134.25
+    ],
+    "Bathroom": [
+      30.78,
+      28.28
+    ],
+    "Kitchen": [
+      74.25
+    ],
+    "DrawingRoom": [
+      132.36
+    ],
+    "Garage": [
+      228.9
+    ],
+    "Stairs": [
+      2.95,
+      2.95,
+      2.75,
+      2.75,
+      2.75,
+      2.75,
+      2.75,
+      1.41,
+      1.38,
+      1.36,
+      1.36,
+      1.33,
+      1.32
+    ],
+    "Lobby": [
+      69.2
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-05-12 02:25:18"
+}
