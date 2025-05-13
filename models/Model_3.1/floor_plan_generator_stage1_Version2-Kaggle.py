@@ -1,5 +1,6 @@
 # --- START OF FILE floor_plan_generator_stage1_Version3_AllData.py ---
-"""!pip install numpy==1.23.5 tensorflow==2.15.0 matplotlib==3.10.1 scikit-learn==1.6.1 pandas==2.2.3 pillow==11.2.1 opencv-python==4.11.0.86
+"""
+!pip install numpy>=2.1.0  tensorflow==2.18.0 matplotlib==3.10.0 scikit-learn==1.3.2 pandas==2.2.3 pillow==11.2.1 opencv-python==4.11.0.86
 """
 import os
 import numpy as np
@@ -416,6 +417,22 @@ def train():
     # tf.config.run_functions_eagerly(True) # Keep commented unless debugging step-by-step
     print("TensorFlow version:", tf.__version__)
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+
+    # Set up a MirroredStrategy for multi-GPU support
+    strategy = tf.distribute.MirroredStrategy()
+
+    print('Number of devices: ', strategy.num_replicas_in_sync)
+
+    # Create and compile your model within the strategy scope
+    with strategy.scope():
+        model = tf.keras.Sequential([
+            tf.keras.layers.Dense(128, activation='relu', input_shape=(784,)),
+            tf.keras.layers.Dense(10, activation='softmax')
+        ])
+
+        model.compile(optimizer='adam',
+                      loss='sparse_categorical_crossentropy',
+                      metrics=['accuracy'])
 
     print("Loading metadata...")
     df = load_metadata()
