@@ -1,0 +1,138 @@
+{
+  "file_name": "10Marla_GF_FP_018_V04.png",
+  "parsed_plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "018",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 2275,
+  "calculated_area_per_pixel_sqft": 0.00479327,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 6,
+    "Store": 1,
+    "Lobby": 1,
+    "Passage": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 72837,
+    "Bathroom": 14723,
+    "Kitchen": 18232,
+    "DrawingRoom": 46435,
+    "Garage": 55240,
+    "Lounge": 68617,
+    "Stairs": 1633,
+    "Store": 11648,
+    "Lobby": 33447,
+    "Passage": 72062
+  },
+  "overall_total_counted_pixels": 394874,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      49280,
+      23557
+    ],
+    "Bathroom": [
+      8205,
+      6518
+    ],
+    "Kitchen": [
+      18232
+    ],
+    "DrawingRoom": [
+      46435
+    ],
+    "Garage": [
+      55240
+    ],
+    "Lounge": [
+      68617
+    ],
+    "Stairs": [
+      420,
+      414,
+      210,
+      209,
+      190,
+      190
+    ],
+    "Store": [
+      11648
+    ],
+    "Lobby": [
+      33447
+    ],
+    "Passage": [
+      72062
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 349.13,
+    "Bathroom": 70.57,
+    "Kitchen": 87.39,
+    "DrawingRoom": 222.58,
+    "Garage": 264.78,
+    "Lounge": 328.9,
+    "Stairs": 7.83,
+    "Store": 55.83,
+    "Lobby": 160.32,
+    "Passage": 345.41
+  },
+  "overall_total_counted_sqft": 1892.74,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      236.21,
+      112.92
+    ],
+    "Bathroom": [
+      39.33,
+      31.24
+    ],
+    "Kitchen": [
+      87.39
+    ],
+    "DrawingRoom": [
+      222.58
+    ],
+    "Garage": [
+      264.78
+    ],
+    "Lounge": [
+      328.9
+    ],
+    "Stairs": [
+      2.01,
+      1.98,
+      1.01,
+      1.0,
+      0.91,
+      0.91
+    ],
+    "Store": [
+      55.83
+    ],
+    "Lobby": [
+      160.32
+    ],
+    "Passage": [
+      345.41
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      35,
+      65
+    ],
+    "physical_area_sqft": 2275
+  },
+  "analysis_date": "2025-05-12 02:25:10"
+}

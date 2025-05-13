@@ -17,7 +17,7 @@ tf.random.set_seed(42)
 class Config:
     # Data parameters
     DATA_DIR = "dataset/"
-    METADATA_PATH = "floor_plan_metadata_v5_includingArea.csv"
+    METADATA_PATH = "floor_plan_metadata_consolidated_v6.csv"
     IMAGE_WIDTH = 849
     IMAGE_HEIGHT = 1570
     PLOT_SIZE = "10Marla"

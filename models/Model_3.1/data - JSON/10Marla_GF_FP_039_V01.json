@@ -1,0 +1,155 @@
+{
+  "file_name": "10Marla_GF_FP_039_V01.png",
+  "parsed_plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "039",
+  "version": "V01",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 2275,
+  "calculated_area_per_pixel_sqft": 0.00479327,
+  "room_counts": {
+    "Bedroom": 3,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 17,
+    "Store": 1,
+    "OpenSpace": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 123938,
+    "Bathroom": 39276,
+    "Kitchen": 23310,
+    "DrawingRoom": 50050,
+    "Garage": 48533,
+    "Lounge": 102552,
+    "Stairs": 7288,
+    "Store": 9688,
+    "OpenSpace": 11076
+  },
+  "overall_total_counted_pixels": 415711,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      48834,
+      38506,
+      36598
+    ],
+    "Bathroom": [
+      16893,
+      15747,
+      6636
+    ],
+    "Kitchen": [
+      23310
+    ],
+    "DrawingRoom": [
+      50050
+    ],
+    "Garage": [
+      48533
+    ],
+    "Lounge": [
+      102552
+    ],
+    "Stairs": [
+      1665,
+      880,
+      540,
+      540,
+      488,
+      408,
+      392,
+      367,
+      270,
+      242,
+      242,
+      231,
+      231,
+      231,
+      231,
+      165,
+      165
+    ],
+    "Store": [
+      9688
+    ],
+    "OpenSpace": [
+      11076
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 594.07,
+    "Bathroom": 188.26,
+    "Kitchen": 111.73,
+    "DrawingRoom": 239.9,
+    "Garage": 232.63,
+    "Lounge": 491.56,
+    "Stairs": 34.93,
+    "Store": 46.44,
+    "OpenSpace": 53.09
+  },
+  "overall_total_counted_sqft": 1992.61,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      234.07,
+      184.57,
+      175.42
+    ],
+    "Bathroom": [
+      80.97,
+      75.48,
+      31.81
+    ],
+    "Kitchen": [
+      111.73
+    ],
+    "DrawingRoom": [
+      239.9
+    ],
+    "Garage": [
+      232.63
+    ],
+    "Lounge": [
+      491.56
+    ],
+    "Stairs": [
+      7.98,
+      4.22,
+      2.59,
+      2.59,
+      2.34,
+      1.96,
+      1.88,
+      1.76,
+      1.29,
+      1.16,
+      1.16,
+      1.11,
+      1.11,
+      1.11,
+      1.11,
+      0.79,
+      0.79
+    ],
+    "Store": [
+      46.44
+    ],
+    "OpenSpace": [
+      53.09
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      35,
+      65
+    ],
+    "physical_area_sqft": 2275
+  },
+  "analysis_date": "2025-05-12 02:25:14"
+}

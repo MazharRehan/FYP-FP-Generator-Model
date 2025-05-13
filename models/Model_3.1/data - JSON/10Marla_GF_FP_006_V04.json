@@ -1,0 +1,182 @@
+{
+  "file_name": "10Marla_GF_FP_006_V04.png",
+  "parsed_plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "006",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 2275,
+  "calculated_area_per_pixel_sqft": 0.00479327,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 27,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 83795,
+    "Bathroom": 25042,
+    "Kitchen": 28300,
+    "DrawingRoom": 38789,
+    "Garage": 49207,
+    "Lounge": 94430,
+    "Stairs": 8001,
+    "Lobby": 15324,
+    "Lawn": 26505,
+    "Passage": 48591
+  },
+  "overall_total_counted_pixels": 417984,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      52328,
+      31467
+    ],
+    "Bathroom": [
+      12177,
+      7755,
+      5110
+    ],
+    "Kitchen": [
+      28300
+    ],
+    "DrawingRoom": [
+      38789
+    ],
+    "Garage": [
+      49207
+    ],
+    "Lounge": [
+      94430
+    ],
+    "Stairs": [
+      647,
+      567,
+      451,
+      443,
+      407,
+      407,
+      401,
+      370,
+      352,
+      352,
+      342,
+      309,
+      304,
+      231,
+      220,
+      220,
+      209,
+      209,
+      198,
+      198,
+      180,
+      180,
+      174,
+      165,
+      165,
+      150,
+      150
+    ],
+    "Lobby": [
+      15324
+    ],
+    "Lawn": [
+      26505
+    ],
+    "Passage": [
+      48591
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 401.65,
+    "Bathroom": 120.03,
+    "Kitchen": 135.65,
+    "DrawingRoom": 185.93,
+    "Garage": 235.86,
+    "Lounge": 452.63,
+    "Stairs": 38.35,
+    "Lobby": 73.45,
+    "Lawn": 127.05,
+    "Passage": 232.91
+  },
+  "overall_total_counted_sqft": 2003.51,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      250.82,
+      150.83
+    ],
+    "Bathroom": [
+      58.37,
+      37.17,
+      24.49
+    ],
+    "Kitchen": [
+      135.65
+    ],
+    "DrawingRoom": [
+      185.93
+    ],
+    "Garage": [
+      235.86
+    ],
+    "Lounge": [
+      452.63
+    ],
+    "Stairs": [
+      3.1,
+      2.72,
+      2.16,
+      2.12,
+      1.95,
+      1.95,
+      1.92,
+      1.77,
+      1.69,
+      1.69,
+      1.64,
+      1.48,
+      1.46,
+      1.11,
+      1.05,
+      1.05,
+      1.0,
+      1.0,
+      0.95,
+      0.95,
+      0.86,
+      0.86,
+      0.83,
+      0.79,
+      0.79,
+      0.72,
+      0.72
+    ],
+    "Lobby": [
+      73.45
+    ],
+    "Lawn": [
+      127.05
+    ],
+    "Passage": [
+      232.91
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      35,
+      65
+    ],
+    "physical_area_sqft": 2275
+  },
+  "analysis_date": "2025-05-12 02:25:08"
+}

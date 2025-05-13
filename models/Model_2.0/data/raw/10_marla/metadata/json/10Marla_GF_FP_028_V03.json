@@ -1,0 +1,142 @@
+{
+  "file_name": "10Marla_GF_FP_028_V03.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "028",
+  "version": "V03",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 33,
+    "OpenSpace": 1,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Dining": 1,
+    "Passage": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 271171,
+    "Bathroom": 36978,
+    "Kitchen": 52895,
+    "DrawingRoom": 142551,
+    "Garage": 174804,
+    "Lounge": 124342,
+    "Stairs": 25772,
+    "OpenSpace": 16038,
+    "Lobby": 31752,
+    "Lawn": 55942,
+    "Dining": 74537,
+    "Passage": 167840
+  },
+  "total_area_pixels": 1174622,
+  "room_areas_sqft": {
+    "Bedroom": 462.83,
+    "Bathroom": 63.11,
+    "Kitchen": 90.28,
+    "DrawingRoom": 243.3,
+    "Garage": 298.35,
+    "Lounge": 212.22,
+    "Stairs": 43.99,
+    "OpenSpace": 27.37,
+    "Lobby": 54.19,
+    "Lawn": 95.48,
+    "Dining": 127.22,
+    "Passage": 286.46
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      231.78,
+      231.04
+    ],
+    "Bathroom": [
+      31.93,
+      31.19
+    ],
+    "Kitchen": [
+      90.28
+    ],
+    "DrawingRoom": [
+      243.3
+    ],
+    "Garage": [
+      298.35
+    ],
+    "Lounge": [
+      212.22
+    ],
+    "Stairs": [
+      2.88,
+      2.87,
+      1.87,
+      1.8,
+      1.77,
+      1.74,
+      1.74,
+      1.67,
+      1.67,
+      1.67,
+      1.67,
+      1.67,
+      1.56,
+      1.56,
+      1.56,
+      1.56,
+      1.5,
+      1.23,
+      1.15,
+      0.86,
+      0.86,
+      0.83,
+      0.83,
+      0.81,
+      0.81,
+      0.78,
+      0.78,
+      0.74,
+      0.72,
+      0.72,
+      0.72,
+      0.72,
+      0.67
+    ],
+    "Store": [],
+    "OpenSpace": [
+      27.37
+    ],
+    "Lobby": [
+      54.19
+    ],
+    "Lawn": [
+      95.48
+    ],
+    "Dining": [
+      127.22
+    ],
+    "Passage": [
+      286.46
+    ]
+  },
+  "analysis_date": "2025-05-12 00:38:37"
+}

@@ -1,0 +1,126 @@
+{
+  "file_name": "20Marla_GF_FP_010_V04.png",
+  "plot_type": "20Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "010",
+  "version": "V04",
+  "dimensions": {
+    "feet": [
+      50,
+      90
+    ],
+    "inches": [
+      12.583,
+      22.594
+    ],
+    "pixels": [
+      1209,
+      2170
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.557,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 22,
+    "Staircase": 1,
+    "Lawn": 1,
+    "Dining": 1,
+    "Passage": 3
+  },
+  "room_areas_pixels": {
+    "Bedroom": 281361,
+    "Bathroom": 123751,
+    "Kitchen": 133933,
+    "DrawingRoom": 164768,
+    "Garage": 420715,
+    "Lounge": 292667,
+    "Stairs": 40116,
+    "Staircase": 121554,
+    "Lawn": 272609,
+    "Dining": 104891,
+    "Passage": 495117
+  },
+  "total_area_pixels": 2451482,
+  "room_areas_sqft": {
+    "Bedroom": 482.6,
+    "Bathroom": 212.26,
+    "Kitchen": 229.73,
+    "DrawingRoom": 282.62,
+    "Garage": 721.63,
+    "Lounge": 502.0,
+    "Stairs": 68.81,
+    "Staircase": 208.5,
+    "Lawn": 467.59,
+    "Dining": 179.91,
+    "Passage": 849.25
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      275.66,
+      206.95
+    ],
+    "Bathroom": [
+      122.71,
+      89.55
+    ],
+    "Kitchen": [
+      229.73
+    ],
+    "DrawingRoom": [
+      282.62
+    ],
+    "Garage": [
+      721.63
+    ],
+    "Lounge": [
+      502.0
+    ],
+    "Stairs": [
+      9.32,
+      3.8,
+      3.64,
+      3.62,
+      3.43,
+      3.43,
+      3.43,
+      3.43,
+      3.4,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      1.7,
+      1.7,
+      1.7,
+      1.7,
+      1.68,
+      1.68,
+      1.6
+    ],
+    "Staircase": [
+      208.5
+    ],
+    "Lawn": [
+      467.59
+    ],
+    "Dining": [
+      179.91
+    ],
+    "Passage": [
+      343.72,
+      253.01,
+      252.52
+    ]
+  },
+  "analysis_date": "2025-04-29 00:27:01"
+}

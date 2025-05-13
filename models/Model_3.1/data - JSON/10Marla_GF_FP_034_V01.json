@@ -1,0 +1,145 @@
+{
+  "file_name": "10Marla_GF_FP_034_V01.png",
+  "parsed_plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "034",
+  "version": "V01",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 2275,
+  "calculated_area_per_pixel_sqft": 0.00479327,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 14,
+    "Lobby": 1,
+    "Lawn": 1,
+    "Passage": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 77043,
+    "Bathroom": 12793,
+    "Kitchen": 28391,
+    "Garage": 74896,
+    "Lounge": 103534,
+    "Stairs": 4428,
+    "Lobby": 14623,
+    "Lawn": 27104,
+    "Passage": 61623
+  },
+  "overall_total_counted_pixels": 404435,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      42193,
+      34850
+    ],
+    "Bathroom": [
+      7055,
+      5738
+    ],
+    "Kitchen": [
+      28391
+    ],
+    "Garage": [
+      74896
+    ],
+    "Lounge": [
+      103534
+    ],
+    "Stairs": [
+      1225,
+      556,
+      375,
+      368,
+      258,
+      217,
+      192,
+      192,
+      187,
+      176,
+      176,
+      176,
+      170,
+      160
+    ],
+    "Lobby": [
+      14623
+    ],
+    "Lawn": [
+      27104
+    ],
+    "Passage": [
+      61623
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 369.29,
+    "Bathroom": 61.32,
+    "Kitchen": 136.09,
+    "Garage": 359.0,
+    "Lounge": 496.27,
+    "Stairs": 21.22,
+    "Lobby": 70.09,
+    "Lawn": 129.92,
+    "Passage": 295.38
+  },
+  "overall_total_counted_sqft": 1938.57,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      202.24,
+      167.05
+    ],
+    "Bathroom": [
+      33.82,
+      27.5
+    ],
+    "Kitchen": [
+      136.09
+    ],
+    "Garage": [
+      359.0
+    ],
+    "Lounge": [
+      496.27
+    ],
+    "Stairs": [
+      5.87,
+      2.67,
+      1.8,
+      1.76,
+      1.24,
+      1.04,
+      0.92,
+      0.92,
+      0.9,
+      0.84,
+      0.84,
+      0.84,
+      0.81,
+      0.77
+    ],
+    "Lobby": [
+      70.09
+    ],
+    "Lawn": [
+      129.92
+    ],
+    "Passage": [
+      295.38
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      35,
+      65
+    ],
+    "physical_area_sqft": 2275
+  },
+  "analysis_date": "2025-05-12 02:25:13"
+}
