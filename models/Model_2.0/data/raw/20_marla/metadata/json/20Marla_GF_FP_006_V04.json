@@ -1,0 +1,122 @@
+{
+  "file_name": "20Marla_GF_FP_006_V04.png",
+  "plot_type": "20Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "006",
+  "version": "V04",
+  "dimensions": {
+    "feet": [
+      50,
+      90
+    ],
+    "inches": [
+      12.583,
+      22.594
+    ],
+    "pixels": [
+      1209,
+      2170
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.557,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 20,
+    "Staircase": 1,
+    "Lawn": 1,
+    "Dining": 1,
+    "Passage": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 249986,
+    "Bathroom": 128301,
+    "Kitchen": 149097,
+    "DrawingRoom": 163673,
+    "Garage": 472252,
+    "Lounge": 246912,
+    "Stairs": 36029,
+    "Staircase": 115649,
+    "Lawn": 287333,
+    "Dining": 124034,
+    "Passage": 484195
+  },
+  "total_area_pixels": 2457461,
+  "room_areas_sqft": {
+    "Bedroom": 428.79,
+    "Bathroom": 220.07,
+    "Kitchen": 255.74,
+    "DrawingRoom": 280.74,
+    "Garage": 810.03,
+    "Lounge": 423.51,
+    "Stairs": 61.8,
+    "Staircase": 198.37,
+    "Lawn": 492.85,
+    "Dining": 212.75,
+    "Passage": 830.51
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      246.7,
+      182.09
+    ],
+    "Bathroom": [
+      124.5,
+      95.57
+    ],
+    "Kitchen": [
+      255.74
+    ],
+    "DrawingRoom": [
+      280.74
+    ],
+    "Garage": [
+      810.03
+    ],
+    "Lounge": [
+      423.51
+    ],
+    "Stairs": [
+      9.41,
+      3.83,
+      3.77,
+      3.42,
+      3.4,
+      3.4,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      3.26,
+      1.7,
+      1.69,
+      1.68,
+      1.68,
+      1.68,
+      1.66,
+      1.66
+    ],
+    "Staircase": [
+      198.37
+    ],
+    "Lawn": [
+      492.85
+    ],
+    "Dining": [
+      212.75
+    ],
+    "Passage": [
+      830.51
+    ]
+  },
+  "analysis_date": "2025-04-29 00:26:57"
+}

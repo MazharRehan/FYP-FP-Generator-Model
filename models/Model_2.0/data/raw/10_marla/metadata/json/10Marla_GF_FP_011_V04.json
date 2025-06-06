@@ -1,0 +1,123 @@
+{
+  "file_name": "10Marla_GF_FP_011_V04.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "011",
+  "version": "V04",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 19,
+    "OpenSpace": 1,
+    "Lawn": 2,
+    "Passage": 1,
+    "DressingArea": 1
+  },
+  "room_areas_pixels": {
+    "Bedroom": 198054,
+    "Bathroom": 85406,
+    "Kitchen": 70429,
+    "DrawingRoom": 127080,
+    "Garage": 224375,
+    "Lounge": 239712,
+    "Stairs": 16781,
+    "OpenSpace": 10004,
+    "Lawn": 52272,
+    "Passage": 55154,
+    "DressingArea": 26078
+  },
+  "total_area_pixels": 1105345,
+  "room_areas_sqft": {
+    "Bedroom": 338.03,
+    "Bathroom": 145.77,
+    "Kitchen": 120.21,
+    "DrawingRoom": 216.9,
+    "Garage": 382.96,
+    "Lounge": 409.13,
+    "Stairs": 28.64,
+    "OpenSpace": 17.07,
+    "Lawn": 89.22,
+    "Passage": 94.13,
+    "DressingArea": 44.51
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      196.52,
+      141.51
+    ],
+    "Bathroom": [
+      64.1,
+      44.44,
+      37.23
+    ],
+    "Kitchen": [
+      120.21
+    ],
+    "DrawingRoom": [
+      216.9
+    ],
+    "Garage": [
+      382.96
+    ],
+    "Lounge": [
+      409.13
+    ],
+    "Stairs": [
+      3.98,
+      2.33,
+      1.75,
+      1.72,
+      1.72,
+      1.72,
+      1.72,
+      1.72,
+      1.72,
+      1.65,
+      1.07,
+      1.07,
+      1.07,
+      1.07,
+      0.99,
+      0.85,
+      0.85,
+      0.85,
+      0.85
+    ],
+    "OpenSpace": [
+      17.07
+    ],
+    "Lawn": [
+      88.95,
+      0.26
+    ],
+    "Passage": [
+      94.13
+    ],
+    "DressingArea": [
+      44.51
+    ]
+  },
+  "analysis_date": "2025-05-12 00:38:29"
+}

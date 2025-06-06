@@ -1,0 +1,145 @@
+{
+  "file_name": "5Marla_GF_FP_006_V04.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "006",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 14,
+    "Lobby": 1,
+    "Dining": 1,
+    "Passage": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 107184,
+    "Bathroom": 26291,
+    "Kitchen": 23288,
+    "Garage": 65699,
+    "Lounge": 85570,
+    "Stairs": 31914,
+    "Lobby": 7780,
+    "Dining": 50740,
+    "Passage": 19500
+  },
+  "overall_total_counted_pixels": 417966,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      54752,
+      52432
+    ],
+    "Bathroom": [
+      13284,
+      13007
+    ],
+    "Kitchen": [
+      23288
+    ],
+    "Garage": [
+      65699
+    ],
+    "Lounge": [
+      85570
+    ],
+    "Stairs": [
+      8521,
+      2464,
+      2464,
+      2310,
+      2310,
+      2310,
+      2310,
+      2310,
+      1213,
+      1199,
+      1140,
+      1125,
+      1123,
+      1115
+    ],
+    "Lobby": [
+      7780
+    ],
+    "Dining": [
+      50740
+    ],
+    "Passage": [
+      19500
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 254.06,
+    "Bathroom": 62.32,
+    "Kitchen": 55.2,
+    "Garage": 155.73,
+    "Lounge": 202.83,
+    "Stairs": 75.65,
+    "Lobby": 18.44,
+    "Dining": 120.27,
+    "Passage": 46.22
+  },
+  "overall_total_counted_sqft": 990.7,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      129.78,
+      124.28
+    ],
+    "Bathroom": [
+      31.49,
+      30.83
+    ],
+    "Kitchen": [
+      55.2
+    ],
+    "Garage": [
+      155.73
+    ],
+    "Lounge": [
+      202.83
+    ],
+    "Stairs": [
+      20.2,
+      5.84,
+      5.84,
+      5.48,
+      5.48,
+      5.48,
+      5.48,
+      5.48,
+      2.88,
+      2.84,
+      2.7,
+      2.67,
+      2.66,
+      2.64
+    ],
+    "Lobby": [
+      18.44
+    ],
+    "Dining": [
+      120.27
+    ],
+    "Passage": [
+      46.22
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-05-12 02:25:19"
+}

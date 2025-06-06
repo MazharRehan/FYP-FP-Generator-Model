@@ -1,0 +1,119 @@
+{
+  "file_name": "10Marla_GF_FP_022_V02.png",
+  "plot_type": "10Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "022",
+  "version": "V02",
+  "dimensions": {
+    "feet": [
+      35,
+      65
+    ],
+    "inches": [
+      8.833,
+      16.344
+    ],
+    "pixels": [
+      849,
+      1570
+    ],
+    "dpi": 96,
+    "aspect_ratio": 0.541,
+    "bit_depth": 24
+  },
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 14,
+    "Lobby": 2,
+    "Lawn": 1,
+    "Passage": 1,
+    "DressingArea": 2
+  },
+  "room_areas_pixels": {
+    "Bedroom": 180285,
+    "Bathroom": 32266,
+    "Kitchen": 36115,
+    "DrawingRoom": 123950,
+    "Garage": 249137,
+    "Lounge": 155076,
+    "Stairs": 10423,
+    "Lobby": 68926,
+    "Lawn": 74538,
+    "Passage": 144945,
+    "DressingArea": 23999
+  },
+  "total_area_pixels": 1099660,
+  "room_areas_sqft": {
+    "Bedroom": 307.7,
+    "Bathroom": 55.07,
+    "Kitchen": 61.64,
+    "DrawingRoom": 211.55,
+    "Garage": 425.22,
+    "Lounge": 264.68,
+    "Stairs": 17.79,
+    "Lobby": 117.64,
+    "Lawn": 127.22,
+    "Passage": 247.39,
+    "DressingArea": 40.96
+  },
+  "room_instances_sqft": {
+    "Bedroom": [
+      160.44,
+      147.27
+    ],
+    "Bathroom": [
+      34.81,
+      20.26
+    ],
+    "Kitchen": [
+      61.64
+    ],
+    "DrawingRoom": [
+      211.55
+    ],
+    "Garage": [
+      425.22
+    ],
+    "Lounge": [
+      264.68
+    ],
+    "Stairs": [
+      5.33,
+      2.35,
+      1.54,
+      1.43,
+      0.95,
+      0.73,
+      0.73,
+      0.7,
+      0.7,
+      0.68,
+      0.68,
+      0.67,
+      0.66,
+      0.66
+    ],
+    "PrayerRoom": [],
+    "Lobby": [
+      75.13,
+      42.51
+    ],
+    "Lawn": [
+      127.22
+    ],
+    "Passage": [
+      247.39
+    ],
+    "DressingArea": [
+      24.94,
+      16.02
+    ]
+  },
+  "analysis_date": "2025-05-12 00:38:34"
+}

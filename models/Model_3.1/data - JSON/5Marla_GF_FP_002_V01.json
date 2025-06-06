@@ -1,0 +1,141 @@
+{
+  "file_name": "5Marla_GF_FP_002_V01.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "002",
+  "version": "V01",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 1,
+    "Bathroom": 1,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 23
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 69093,
+    "Bathroom": 14973,
+    "Kitchen": 42117,
+    "DrawingRoom": 54228,
+    "Garage": 71692,
+    "Lounge": 113355,
+    "Stairs": 26728
+  },
+  "overall_total_counted_pixels": 392186,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      69093
+    ],
+    "Bathroom": [
+      14973
+    ],
+    "Kitchen": [
+      42117
+    ],
+    "DrawingRoom": [
+      54228
+    ],
+    "Garage": [
+      71692
+    ],
+    "Lounge": [
+      113355
+    ],
+    "Stairs": [
+      3003,
+      1474,
+      1411,
+      1401,
+      1390,
+      1383,
+      1328,
+      1328,
+      1328,
+      1245,
+      1245,
+      1245,
+      1245,
+      1245,
+      1245,
+      703,
+      703,
+      703,
+      703,
+      600,
+      600,
+      600,
+      600
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 163.77,
+    "Bathroom": 35.49,
+    "Kitchen": 99.83,
+    "DrawingRoom": 128.54,
+    "Garage": 169.93,
+    "Lounge": 268.69,
+    "Stairs": 63.35
+  },
+  "overall_total_counted_sqft": 929.6,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      163.77
+    ],
+    "Bathroom": [
+      35.49
+    ],
+    "Kitchen": [
+      99.83
+    ],
+    "DrawingRoom": [
+      128.54
+    ],
+    "Garage": [
+      169.93
+    ],
+    "Lounge": [
+      268.69
+    ],
+    "Stairs": [
+      7.12,
+      3.49,
+      3.34,
+      3.32,
+      3.29,
+      3.28,
+      3.15,
+      3.15,
+      3.15,
+      2.95,
+      2.95,
+      2.95,
+      2.95,
+      2.95,
+      2.95,
+      1.67,
+      1.67,
+      1.67,
+      1.67,
+      1.42,
+      1.42,
+      1.42,
+      1.42
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-05-12 02:25:18"
+}
