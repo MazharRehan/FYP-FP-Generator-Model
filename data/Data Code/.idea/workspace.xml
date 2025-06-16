@@ -5,99 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fca90ea-bfd1-44d4-98ec-65f90393530c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_011_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_011_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_011_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_011_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_012_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_012_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_012_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_012_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_013_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_013_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_013_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_013_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_014_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_014_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_014_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_014_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_015_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_015_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_015_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_015_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_016_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_016_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_016_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_016_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_017_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_017_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_017_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AugmentedDataset/5Marla_GF_FP_017_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Data Code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AugmentationCode.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FP_ResizeCode.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_011_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_012_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_013_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_014_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_015_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_016_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_017_V01_aug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_011_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_011_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_011_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_011_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_012_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_012_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_012_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_012_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_013_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_013_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_013_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_013_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_014_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_014_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_014_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_014_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_015_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_015_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_015_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_015_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_016_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_016_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_016_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_016_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_017_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_017_V02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_017_V03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/augmented_images_all/5Marla_GF_FP_017_V04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_011_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_012_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_013_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_014_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_015_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_016_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/5Marla_GF_FP_017_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_011_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_012_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_013_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_014_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_015_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_016_V01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resized_images/5Marla_GF_FP_017_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_011_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_011_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_012_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_012_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_013_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_013_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_014_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_014_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_015_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_015_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_016_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_016_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_017_V01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Original_Dataset/5_marla/5Marla_GF_FP_017_V01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../augmention code/Dataset Augmentation Code.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Dataset Augmentation Code.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AugmentationCode.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/AugmentationCode.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset Augmentation Code.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_011_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_012_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_013_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_014_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_015_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_016_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/augmented_images/5Marla_GF_FP_017_V01_aug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_011_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_012_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_013_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_014_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_015_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_016_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/5Marla_GF_FP_017_V01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examples/sample_floor_plans/10_marla/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examples/sample_floor_plans/20_marla/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examples/sample_floor_plans/5_marla/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../normalized/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,29 +42,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2ybEnRAUIZ6JHmxhyZ2DtGR5ccn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.tools",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -153,6 +81,9 @@
       <option name="presentableId" value="Default" />
       <updated>1750095040952</updated>
       <workItem from="1750095042841" duration="2469000" />
+      <workItem from="1750098387873" duration="27000" />
+      <workItem from="1750098437768" duration="11000" />
+      <workItem from="1750098571459" duration="136000" />
     </task>
     <servers />
   </component>
