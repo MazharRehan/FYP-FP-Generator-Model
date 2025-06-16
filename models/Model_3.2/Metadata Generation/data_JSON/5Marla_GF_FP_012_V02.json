@@ -1,0 +1,148 @@
+{
+  "file_name": "5Marla_GF_FP_012_V02.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "012",
+  "version": "V02",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 2,
+    "Kitchen": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 20,
+    "Store": 1,
+    "OpenSpace": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 118517,
+    "Bathroom": 35852,
+    "Kitchen": 24246,
+    "Garage": 75392,
+    "Lounge": 103520,
+    "Stairs": 22632,
+    "Store": 14490,
+    "OpenSpace": 20852
+  },
+  "overall_total_counted_pixels": 415501,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      66643,
+      51874
+    ],
+    "Bathroom": [
+      18288,
+      17564
+    ],
+    "Kitchen": [
+      24246
+    ],
+    "Garage": [
+      75392
+    ],
+    "Lounge": [
+      103520
+    ],
+    "Stairs": [
+      7579,
+      1168,
+      1139,
+      1095,
+      1095,
+      1095,
+      1095,
+      1095,
+      1074,
+      1072,
+      543,
+      541,
+      540,
+      525,
+      517,
+      512,
+      512,
+      512,
+      468,
+      455
+    ],
+    "Store": [
+      14490
+    ],
+    "OpenSpace": [
+      20852
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 280.92,
+    "Bathroom": 84.98,
+    "Kitchen": 57.47,
+    "Garage": 178.7,
+    "Lounge": 245.37,
+    "Stairs": 53.64,
+    "Store": 34.35,
+    "OpenSpace": 49.43
+  },
+  "overall_total_counted_sqft": 984.86,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      157.96,
+      122.96
+    ],
+    "Bathroom": [
+      43.35,
+      41.63
+    ],
+    "Kitchen": [
+      57.47
+    ],
+    "Garage": [
+      178.7
+    ],
+    "Lounge": [
+      245.37
+    ],
+    "Stairs": [
+      17.96,
+      2.77,
+      2.7,
+      2.6,
+      2.6,
+      2.6,
+      2.6,
+      2.6,
+      2.55,
+      2.54,
+      1.29,
+      1.28,
+      1.28,
+      1.24,
+      1.23,
+      1.21,
+      1.21,
+      1.21,
+      1.11,
+      1.08
+    ],
+    "Store": [
+      34.35
+    ],
+    "OpenSpace": [
+      49.43
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-06-17 00:05:50"
+}

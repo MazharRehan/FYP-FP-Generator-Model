@@ -1,0 +1,139 @@
+{
+  "file_name": "5Marla_GF_FP_014_V04.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "014",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 1,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Stairs": 21,
+    "Dining": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 105230,
+    "Bathroom": 19887,
+    "Kitchen": 50917,
+    "DrawingRoom": 62569,
+    "Garage": 74748,
+    "Stairs": 27945,
+    "Dining": 44569
+  },
+  "overall_total_counted_pixels": 385865,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      52824,
+      52406
+    ],
+    "Bathroom": [
+      19887
+    ],
+    "Kitchen": [
+      50917
+    ],
+    "DrawingRoom": [
+      62569
+    ],
+    "Garage": [
+      74748
+    ],
+    "Stairs": [
+      9211,
+      1248,
+      1248,
+      1248,
+      1248,
+      1248,
+      1248,
+      1248,
+      1180,
+      1136,
+      1136,
+      1136,
+      1074,
+      608,
+      592,
+      560,
+      560,
+      558,
+      558,
+      456,
+      444
+    ],
+    "Dining": [
+      44569
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 249.43,
+    "Bathroom": 47.14,
+    "Kitchen": 120.69,
+    "DrawingRoom": 148.31,
+    "Garage": 177.17,
+    "Stairs": 66.24,
+    "Dining": 105.64
+  },
+  "overall_total_counted_sqft": 914.61,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      125.21,
+      124.22
+    ],
+    "Bathroom": [
+      47.14
+    ],
+    "Kitchen": [
+      120.69
+    ],
+    "DrawingRoom": [
+      148.31
+    ],
+    "Garage": [
+      177.17
+    ],
+    "Stairs": [
+      21.83,
+      2.96,
+      2.96,
+      2.96,
+      2.96,
+      2.96,
+      2.96,
+      2.96,
+      2.8,
+      2.69,
+      2.69,
+      2.69,
+      2.55,
+      1.44,
+      1.4,
+      1.33,
+      1.33,
+      1.32,
+      1.32,
+      1.08,
+      1.05
+    ],
+    "Dining": [
+      105.64
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-06-17 00:05:50"
+}

@@ -1,0 +1,143 @@
+{
+  "file_name": "5Marla_GF_FP_016_V01.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "016",
+  "version": "V01",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 1,
+    "Kitchen": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 23,
+    "Laundry": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 128495,
+    "Bathroom": 19580,
+    "Kitchen": 50504,
+    "Garage": 56966,
+    "Lounge": 113915,
+    "Stairs": 29065,
+    "Laundry": 22973
+  },
+  "overall_total_counted_pixels": 421498,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      68509,
+      59986
+    ],
+    "Bathroom": [
+      19580
+    ],
+    "Kitchen": [
+      50504
+    ],
+    "Garage": [
+      56966
+    ],
+    "Lounge": [
+      113915
+    ],
+    "Stairs": [
+      9600,
+      1190,
+      1190,
+      1190,
+      1170,
+      1170,
+      1170,
+      1170,
+      1170,
+      1170,
+      1170,
+      1092,
+      1061,
+      578,
+      578,
+      570,
+      570,
+      569,
+      568,
+      543,
+      543,
+      521,
+      512
+    ],
+    "Laundry": [
+      22973
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 304.57,
+    "Bathroom": 46.41,
+    "Kitchen": 119.71,
+    "Garage": 135.03,
+    "Lounge": 270.01,
+    "Stairs": 68.89,
+    "Laundry": 54.45
+  },
+  "overall_total_counted_sqft": 999.08,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      162.39,
+      142.18
+    ],
+    "Bathroom": [
+      46.41
+    ],
+    "Kitchen": [
+      119.71
+    ],
+    "Garage": [
+      135.03
+    ],
+    "Lounge": [
+      270.01
+    ],
+    "Stairs": [
+      22.75,
+      2.82,
+      2.82,
+      2.82,
+      2.77,
+      2.77,
+      2.77,
+      2.77,
+      2.77,
+      2.77,
+      2.77,
+      2.59,
+      2.51,
+      1.37,
+      1.37,
+      1.35,
+      1.35,
+      1.35,
+      1.35,
+      1.29,
+      1.29,
+      1.23,
+      1.21
+    ],
+    "Laundry": [
+      54.45
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-06-17 00:05:50"
+}

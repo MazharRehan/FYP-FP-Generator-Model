@@ -1,0 +1,6 @@
+conda activate floorplan-env
+
+1. 0_generate_metadata_CreateDraft_CSV_File.py
+2. 1.0_generate_metadata_count_v6_JsonFiles.py
+3. 1.1_generate_metadata_count_v6_Json+CSV.py
+

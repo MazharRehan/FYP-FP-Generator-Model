@@ -1,0 +1,144 @@
+{
+  "file_name": "5Marla_GF_FP_015_V04.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "015",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 1,
+    "Bathroom": 1,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 20,
+    "Lawn": 1
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 80069,
+    "Bathroom": 13847,
+    "Kitchen": 30063,
+    "DrawingRoom": 58526,
+    "Garage": 69545,
+    "Lounge": 89363,
+    "Stairs": 21992,
+    "Lawn": 28325
+  },
+  "overall_total_counted_pixels": 391730,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      80069
+    ],
+    "Bathroom": [
+      13847
+    ],
+    "Kitchen": [
+      30063
+    ],
+    "DrawingRoom": [
+      58526
+    ],
+    "Garage": [
+      69545
+    ],
+    "Lounge": [
+      89363
+    ],
+    "Stairs": [
+      5680,
+      1296,
+      1293,
+      1292,
+      1292,
+      1275,
+      1216,
+      1072,
+      650,
+      648,
+      648,
+      648,
+      648,
+      647,
+      647,
+      629,
+      629,
+      611,
+      611,
+      560
+    ],
+    "Lawn": [
+      28325
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 189.79,
+    "Bathroom": 32.82,
+    "Kitchen": 71.26,
+    "DrawingRoom": 138.72,
+    "Garage": 164.84,
+    "Lounge": 211.82,
+    "Stairs": 52.13,
+    "Lawn": 67.14
+  },
+  "overall_total_counted_sqft": 928.52,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      189.79
+    ],
+    "Bathroom": [
+      32.82
+    ],
+    "Kitchen": [
+      71.26
+    ],
+    "DrawingRoom": [
+      138.72
+    ],
+    "Garage": [
+      164.84
+    ],
+    "Lounge": [
+      211.82
+    ],
+    "Stairs": [
+      13.46,
+      3.07,
+      3.06,
+      3.06,
+      3.06,
+      3.02,
+      2.88,
+      2.54,
+      1.54,
+      1.54,
+      1.54,
+      1.54,
+      1.54,
+      1.53,
+      1.53,
+      1.49,
+      1.49,
+      1.45,
+      1.45,
+      1.33
+    ],
+    "Lawn": [
+      67.14
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-06-17 00:05:50"
+}
