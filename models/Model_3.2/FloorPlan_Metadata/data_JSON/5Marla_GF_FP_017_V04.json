@@ -1,0 +1,152 @@
+{
+  "file_name": "5Marla_GF_FP_017_V04.png",
+  "parsed_plot_type": "5Marla",
+  "floor_level": "GF",
+  "plan_type": "FP",
+  "fp_number": "017",
+  "version": "V04",
+  "image_actual_width_px": 512,
+  "image_actual_height_px": 927,
+  "image_configured_standardized_width_px": 512,
+  "image_configured_standardized_height_px": 927,
+  "plot_physical_area_sqft": 1125,
+  "calculated_area_per_pixel_sqft": 0.0023703,
+  "room_counts": {
+    "Bedroom": 2,
+    "Bathroom": 3,
+    "Kitchen": 1,
+    "DrawingRoom": 1,
+    "Garage": 1,
+    "Lounge": 1,
+    "Stairs": 20,
+    "OpenSpace": 2
+  },
+  "room_total_areas_pixels": {
+    "Bedroom": 96415,
+    "Bathroom": 28680,
+    "Kitchen": 46733,
+    "DrawingRoom": 57122,
+    "Garage": 52920,
+    "Lounge": 104983,
+    "Stairs": 21659,
+    "OpenSpace": 10195
+  },
+  "overall_total_counted_pixels": 418707,
+  "room_instance_areas_pixels": {
+    "Bedroom": [
+      51019,
+      45396
+    ],
+    "Bathroom": [
+      10399,
+      9430,
+      8851
+    ],
+    "Kitchen": [
+      46733
+    ],
+    "DrawingRoom": [
+      57122
+    ],
+    "Garage": [
+      52920
+    ],
+    "Lounge": [
+      104983
+    ],
+    "Stairs": [
+      7208,
+      1120,
+      1071,
+      1071,
+      1050,
+      1050,
+      1050,
+      1050,
+      1050,
+      943,
+      544,
+      544,
+      527,
+      526,
+      497,
+      493,
+      492,
+      489,
+      442,
+      442
+    ],
+    "OpenSpace": [
+      6059,
+      4136
+    ]
+  },
+  "room_total_areas_sqft": {
+    "Bedroom": 228.53,
+    "Bathroom": 67.98,
+    "Kitchen": 110.77,
+    "DrawingRoom": 135.4,
+    "Garage": 125.44,
+    "Lounge": 248.84,
+    "Stairs": 51.34,
+    "OpenSpace": 24.17
+  },
+  "overall_total_counted_sqft": 992.46,
+  "room_instance_areas_sqft": {
+    "Bedroom": [
+      120.93,
+      107.6
+    ],
+    "Bathroom": [
+      24.65,
+      22.35,
+      20.98
+    ],
+    "Kitchen": [
+      110.77
+    ],
+    "DrawingRoom": [
+      135.4
+    ],
+    "Garage": [
+      125.44
+    ],
+    "Lounge": [
+      248.84
+    ],
+    "Stairs": [
+      17.09,
+      2.65,
+      2.54,
+      2.54,
+      2.49,
+      2.49,
+      2.49,
+      2.49,
+      2.49,
+      2.24,
+      1.29,
+      1.29,
+      1.25,
+      1.25,
+      1.18,
+      1.17,
+      1.17,
+      1.16,
+      1.05,
+      1.05
+    ],
+    "OpenSpace": [
+      14.36,
+      9.8
+    ]
+  },
+  "physical_plot_info_ref": {
+    "physical_dims_ft": [
+      25,
+      45
+    ],
+    "physical_area_sqft": 1125
+  },
+  "analysis_date": "2025-06-17 00:05:51"
+}
