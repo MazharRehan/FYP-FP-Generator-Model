@@ -1,202 +1,205 @@
-import os
-import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
-from floor_plan_generator_stage1_simplified_Version2 import Config, build_generator, preprocess_image, prepare_condition_vector
-import pandas as pd
-from sklearn.model_selection import train_test_split
+import numpy as np
+from typing import List, Dict, Tuple
 
-def load_trained_generator():
-    """Load the trained generator model."""
-    generator = build_generator()
-    try:
-        generator.load_weights(os.path.join(Config.CHECKPOINT_DIR, 'final_generator'))
-        print("Loaded trained generator model successfully!")
-        return generator
-    except Exception as e:
-        print(f"Error loading generator: {e}")
-        return None
+# Configuration for architectural standards (adapted from cganFloorPlanGenerator.ts)
+ARCHITECTURAL_PATTERNS = {
+    'adjacency_matrix': {
+        'bedroom_bathroom': 0.95,
+        'kitchen_dining': 0.90,
+        'lounge_drawingRoom': 0.85,
+        # Add other adjacency rules as needed
+    },
+    'room_size_ratios': {
+        'bedroom': {'min_area': 100, 'ratio': 1.0},
+        'bathroom': {'min_area': 25, 'ratio': 0.75},
+        'kitchen': {'min_area': 80, 'ratio': 1.2},
+        'lounge': {'min_area': 252, 'ratio': 1.29},
+        # Add other room types as needed
+    }
+}
 
-def compare_real_vs_generated(metadata_path=Config.METADATA_PATH, data_dir=Config.DATA_DIR, num_samples=5):
-    """Compare real floor plans with generated ones."""
-    # Load metadata
-    df = pd.read_csv(metadata_path)
-    df = df[df['PlotSize'] == Config.PLOT_SIZE]
-    df = df[df['Version'] == 'V01']  # Use only original floor plans
-    
-    # Split data to use test set
-    _, test_df = train_test_split(df, test_size=0.1, random_state=42)
-    test_df = test_df.iloc[:num_samples]  # Take only a few samples
-    
-    # Load generator
-    generator = load_trained_generator()
-    if generator is None:
-        return
-    
-    # Create output directory
-    output_dir = "evaluation_results"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # Loop through test samples
-    for i, (_, row) in enumerate(test_df.iterrows()):
-        # Load real image
-        image_path = os.path.join(data_dir, row['FilePath'])
-        real_image = preprocess_image(image_path)
-        
-        # Extract condition vector
-        condition = prepare_condition_vector(row)
-        condition = np.expand_dims(condition, axis=0)
-        
-        # Generate fake image
-        noise = tf.random.normal([1, Config.LATENT_DIM])
-        fake_image = generator([noise, condition], training=False)[0]
-        
-        # Convert from [-1, 1] to [0, 1] for visualization
-        real_image = (real_image + 1.0) / 2.0
-        fake_image = (fake_image + 1.0) / 2.0
-        
-        # Create comparison visualization
-        plt.figure(figsize=(12, 8))
-        plt.suptitle(f"Sample {i+1}: Real vs Generated Floor Plan (10 Marla)", fontsize=16)
-        
-        # Real image - walls
-        plt.subplot(2, 3, 1)
-        plt.imshow(real_image[:, :, 0], cmap='gray')
-        plt.title("Real - Walls")
-        plt.axis('off')
-        
-        # Real image - rooms
-        plt.subplot(2, 3, 2)
-        plt.imshow(real_image[:, :, 1], cmap='jet')
-        plt.title("Real - Rooms")
-        plt.axis('off')
-        
-        # Real image - combined
-        plt.subplot(2, 3, 3)
-        combined_real = np.zeros((real_image.shape[0], real_image.shape[1], 3))
-        combined_real[:, :, 0] = real_image[:, :, 0]  # Walls in red channel
-        combined_real[:, :, 1] = real_image[:, :, 1]  # Room areas in green channel
-        plt.imshow(combined_real)
-        plt.title("Real - Combined")
-        plt.axis('off')
-        
-        # Generated image - walls
-        plt.subplot(2, 3, 4)
-        plt.imshow(fake_image[:, :, 0], cmap='gray')
-        plt.title("Generated - Walls")
-        plt.axis('off')
-        
-        # Generated image - rooms
-        plt.subplot(2, 3, 5)
-        plt.imshow(fake_image[:, :, 1], cmap='jet')
-        plt.title("Generated - Rooms")
-        plt.axis('off')
-        
-        # Generated image - combined
-        plt.subplot(2, 3, 6)
-        combined_fake = np.zeros((fake_image.shape[0], fake_image.shape[1], 3))
-        combined_fake[:, :, 0] = fake_image[:, :, 0]  # Walls in red channel
-        combined_fake[:, :, 1] = fake_image[:, :, 1]  # Room areas in green channel
-        plt.imshow(combined_fake)
-        plt.title("Generated - Combined")
-        plt.axis('off')
-        
-        # Add metadata information
-        bedroom_count = row.get('Count_Bedroom', 0)
-        bathroom_count = row.get('Count_Bathroom', 0)
-        plt.figtext(0.5, 0.01, 
-                   f"Floor Plan: {row['FloorLevel']}-{row['FP_Number']} • Bedrooms: {bedroom_count} • Bathrooms: {bathroom_count}",
-                   ha='center', fontsize=12)
-        
-        # Save comparison
-        plt.tight_layout()
-        plt.subplots_adjust(top=0.9, bottom=0.1)
-        plt.savefig(os.path.join(output_dir, f"comparison_{i+1}.png"), dpi=150)
-        plt.close()
-        
-        print(f"Generated comparison for sample {i+1}")
-    
-    print(f"Evaluation complete! Check {output_dir} directory for results")
+# Room class to mimic TypeScript Room type
+class Room:
+    def __init__(self, room_type: str, position: Tuple[float, float], size: Tuple[float, float]):
+        self.type = room_type
+        self.position = {'x': position[0], 'y': position[1]}
+        self.size = {'width': size[0], 'height': size[1]}
 
-def generate_varying_requirements():
-    """Generate floor plans with varying requirements."""
-    generator = load_trained_generator()
-    if generator is None:
-        return
-    
-    # Create output directory
-    output_dir = "variation_results"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # Define variations to test
-    variations = [
-        {"bedrooms": 1, "bathrooms": 1, "lounge": 1, "drawing_room": 1, "kitchen": 1},
-        {"bedrooms": 2, "bathrooms": 2, "lounge": 1, "drawing_room": 1, "kitchen": 1},
-        {"bedrooms": 3, "bathrooms": 2, "lounge": 1, "drawing_room": 1, "kitchen": 1},
-        {"bedrooms": 2, "bathrooms": 3, "lounge": 1, "drawing_room": 1, "kitchen": 1},
-        {"bedrooms": 3, "bathrooms": 3, "lounge": 0, "drawing_room": 1, "kitchen": 1}
-    ]
-    
-    # Generate samples for each variation
-    for i, params in enumerate(variations):
-        # Create condition vector
-        condition = np.zeros(Config.CONDITION_DIM, dtype=np.float32)
-        condition[0] = params["bathrooms"] / 4.0
-        condition[1] = params["bedrooms"] / 3.0
-        condition[2] = min(params["drawing_room"], 1.0)
-        condition[3] = min(params["kitchen"], 1.0)
-        condition[4] = min(params["lounge"], 1.0)
+# GeneratedFloorPlan class to mimic TypeScript structure
+class GeneratedFloorPlan:
+    def __init__(self, rooms: List[Room]):
+        self.rooms = rooms
+
+class CNNValidator:
+    def __init__(self):
+        self.model = None
+        self.is_model_loaded = False
+        self.initialize_model()
+
+    def initialize_model(self):
+        """Initialize a U-Net-based CNN model for layout validation."""
+        try:
+            self.model = self.create_cnn_model()
+            # Optionally load pre-trained weights
+            # self.model.load_weights('path/to/pretrained/weights.h5')
+            self.is_model_loaded = True
+        except Exception as e:
+            print(f"Failed to initialize CNN model: {e}")
+            self.is_model_loaded = False
+
+    def create_cnn_model(self) -> tf.keras.Model:
+        """Create a U-Net CNN model for validating 10x10 floor plan grids."""
+        input_shape = (10, 10, 1)  # 10x10 grid with 1 channel (room type encoding)
+        inputs = tf.keras.Input(shape=input_shape)
+
+        # Encoder: Downsampling path
+        c1 = tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same')(inputs)
+        p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
+        c2 = tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same')(p1)
+        p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
+
+        # Bottleneck
+        bottleneck = tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same')(p2)
+
+        # Decoder: Upsampling path
+        u1 = tf.keras.layers.UpSampling2D((2, 2))(bottleneck)
+        c3 = tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same')(u1)
+        u2 = tf.keras.layers.UpSampling2D((2, 2))(c3)
+        c4 = tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same')(u2)
+
+        # Output: Binary classification (valid/invalid)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='sigmoid', padding='same')(c4)
+
+        model = tf.keras.Model(inputs, outputs)
+        model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+                      loss='binary_crossentropy',
+                      metrics=['accuracy'])
+        return model
+
+    def preprocess_grid(self, grid: np.ndarray) -> tf.Tensor:
+        """Preprocess the 10x10 CGAN grid for CNN input."""
+        # Ensure grid is 10x10
+        grid = np.array(grid, dtype=np.float32)
+        if grid.shape != (10, 10):
+            raise ValueError("Grid must be 10x10")
         
-        # Generate multiple samples with same condition
-        plt.figure(figsize=(15, 10))
-        title = f"B{params['bedrooms']}-BR{params['bathrooms']}"
-        if params['lounge'] == 0:
-            title += "-NoLounge"
-        plt.suptitle(f"Generated Floor Plans with {title}", fontsize=16)
-        
-        for j in range(6):  # Generate 6 variations
-            # Generate random noise
-            noise = tf.random.normal([1, Config.LATENT_DIM])
+        # Reshape to [1, 10, 10, 1] and normalize to [0, 1]
+        grid = grid.reshape(1, 10, 10, 1) / 255.0
+        return tf.convert_to_tensor(grid)
+
+    def validate_layout(self, grid: np.ndarray, floor_plan: GeneratedFloorPlan) -> bool:
+        """Validate the CGAN-generated grid using the CNN."""
+        if not self.is_model_loaded or not self.model:
+            print("CNN model not loaded, using rule-based validation")
+            return self.rule_based_validation(floor_plan)
+
+        try:
+            # Preprocess and predict
+            input_tensor = self.preprocess_grid(grid)
+            prediction = self.model.predict(input_tensor, verbose=0)
+            validity_score = prediction[0, 0, 0, 0]  # Extract scalar probability
+
+            # Threshold for validity
+            is_valid = validity_score >= 0.7
+            if not is_valid:
+                print("CNN validation failed, checking with rule-based logic")
+                return self.rule_based_validation(floor_plan)
             
-            # Generate floor plan
-            generated = generator([noise, np.expand_dims(condition, axis=0)], training=False)[0]
-            
-            # Convert from [-1, 1] to [0, 1]
-            generated = (generated + 1.0) / 2.0
-            
-            # Plot combined visualization
-            plt.subplot(2, 3, j+1)
-            combined = np.zeros((generated.shape[0], generated.shape[1], 3))
-            combined[:, :, 0] = generated[:, :, 0]  # Walls in red channel
-            combined[:, :, 1] = generated[:, :, 1]  # Room areas in green channel
-            plt.imshow(combined)
-            plt.title(f"Variation {j+1}")
-            plt.axis('off')
-        
-        # Add description
-        bedroom_str = "Bedroom" if params["bedrooms"] == 1 else "Bedrooms"
-        bathroom_str = "Bathroom" if params["bathrooms"] == 1 else "Bathrooms"
-        plt.figtext(0.5, 0.01, 
-                   f"{params['bedrooms']} {bedroom_str}, {params['bathrooms']} {bathroom_str}, " +
-                   f"Drawing Room: {'Yes' if params['drawing_room'] else 'No'}, " +
-                   f"Kitchen: {'Yes' if params['kitchen'] else 'No'}, " +
-                   f"Lounge: {'Yes' if params['lounge'] else 'No'}",
-                   ha='center', fontsize=12)
-        
-        # Save figure
-        plt.tight_layout()
-        plt.subplots_adjust(top=0.9, bottom=0.1)
-        plt.savefig(os.path.join(output_dir, f"variations_{title}.png"), dpi=150)
-        plt.close()
-        
-        print(f"Generated variations for configuration {i+1}: {title}")
-    
-    print(f"Variation analysis complete! Check {output_dir} directory for results")
+            return True
+        except Exception as e:
+            print(f"CNN validation error: {e}")
+            return self.rule_based_validation(floor_plan)
 
+    def rule_based_validation(self, floor_plan: GeneratedFloorPlan) -> bool:
+        """Fallback rule-based validation for floor plan correctness."""
+        rooms = floor_plan.rooms
+
+        # Check for overlaps
+        for i in range(len(rooms)):
+            for j in range(i + 1, len(rooms)):
+                if self.has_overlap(rooms[i], rooms[j]):
+                    print(f"Overlap detected between {rooms[i].type} and {rooms[j].type}")
+                    return False
+
+        # Check room sizes
+        for room in rooms:
+            min_area = ARCHITECTURAL_PATTERNS['room_size_ratios'].get(room.type, {'min_area': 25})['min_area']
+            area = room.size['width'] * room.size['height']
+            if area < min_area:
+                print(f"Room {room.type} area ({area}) below minimum ({min_area})")
+                return False
+
+        # Check adjacency rules
+        for room in rooms:
+            adjacent_rooms = self.find_adjacent_rooms(room, rooms)
+            for key, score in ARCHITECTURAL_PATTERNS['adjacency_matrix'].items():
+                room_type1, room_type2 = key.split('_')
+                if room.type == room_type1 and score > 0.8:
+                    has_required_adjacent = any(adj_room.type == room_type2 for adj_room in adjacent_rooms)
+                    if not has_required_adjacent:
+                        print(f"Missing required adjacency for {room.type} to {room_type2}")
+                        return False
+
+        return True
+
+    def has_overlap(self, room1: Room, room2: Room) -> bool:
+        """Check if two rooms overlap (adapted from floorPlanGenerator.ts)."""
+        buffer = 1.0  # 1-unit buffer for spacing
+        r1x1, r1y1 = room1.position['x'], room1.position['y']
+        r1x2 = r1x1 + room1.size['width']
+        r1y2 = r1y1 + room1.size['height']
+        r2x1, r2y1 = room2.position['x'], room2.position['y']
+        r2x2 = r2x1 + room2.size['width']
+        r2y2 = r2y1 + room2.size['height']
+
+        return (r1x1 < r2x2 + buffer and
+                r1x2 > r2x1 - buffer and
+                r1y1 < r2y2 + buffer and
+                r1y2 > r2y1 - buffer)
+
+    def find_adjacent_rooms(self, room: Room, rooms: List[Room]) -> List[Room]:
+        """Find rooms adjacent to the given room."""
+        adjacent = []
+        for other_room in rooms:
+            if other_room != room and self.has_shared_wall(room, other_room):
+                adjacent.append(other_room)
+        return adjacent
+
+    def has_shared_wall(self, room1: Room, room2: Room) -> bool:
+        """Check if two rooms share a wall (adapted from floorPlanGenerator.ts)."""
+        tolerance = 1.0
+        r1x1, r1y1 = room1.position['x'], room1.position['y']
+        r1x2 = r1x1 + room1.size['width']
+        r1y2 = r1y1 + room1.size['height']
+        r2x1, r2y1 = room2.position['x'], room2.position['y']
+        r2x2 = r2x1 + room2.size['width']
+        r2y2 = r2y1 + room2.size['height']
+
+        return (
+            (abs(r1x2 - r2x1) <= tolerance and r1y1 < r2y2 and r1y2 > r2y1) or
+            (abs(r1x1 - r2x2) <= tolerance and r1y1 < r2y2 and r1y2 > r2y1) or
+            (abs(r1y2 - r2y1) <= tolerance and r1x1 < r2x2 and r1x2 > r2x1) or
+            (abs(r1y1 - r2y2) <= tolerance and r1x1 < r2x2 and r1x2 > r2x1)
+        )
+
+# Example usage
+def integrate_cnn_with_cgan(grid: np.ndarray, floor_plan: GeneratedFloorPlan) -> bool:
+    validator = CNNValidator()
+    return validator.validate_layout(grid, floor_plan)
+
+# Example test
 if __name__ == "__main__":
-    print("Running evaluation...")
-    try:
-        compare_real_vs_generated(num_samples=3)  # Start with just a few samples
-        generate_varying_requirements()
-    except Exception as e:
-        print(f"Evaluation failed with error: {e}")
+    # Sample 10x10 grid (mock CGAN output)
+    sample_grid = np.random.rand(10, 10) * 255  # Mock room type encodings
+    # Sample floor plan
+    sample_rooms = [
+        Room('bedroom', (2, 2), (10, 10)),
+        Room('bathroom', (12, 2), (5, 5)),
+        Room('kitchen', (2, 12), (8, 8)),
+    ]
+    sample_floor_plan = GeneratedFloorPlan(sample_rooms)
+
+    # Validate
+    is_valid = integrate_cnn_with_cgan(sample_grid, sample_floor_plan)
+    print(f"Floor plan is {'valid' if is_valid else 'invalid'}")
